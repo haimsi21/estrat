@@ -1,0 +1,15 @@
+from django.contrib import admin
+from .models import Indicador
+
+
+@admin.register(Indicador)
+class IndicadorAdmin(admin.ModelAdmin):
+    list_display = (
+        "nombre", "tipo", "valor", "unidad", "area",
+        "empresa", "proyecto", "fecha_registro",
+    )
+    list_filter = ("area", "tipo", "empresa", "fecha_registro")
+    search_fields = ("nombre", "notas", "proyecto__nombre")
+    date_hierarchy = "fecha_registro"
+    raw_id_fields = ("empresa", "proyecto", "registrado_por")
+    readonly_fields = ("creado_en",)

@@ -1,0 +1,5023 @@
+Project Snapshot: frontend
+Generated: 2026-07-30 17:16:33
+============================================================
+
+Directory Structure:
+----------------------------------------
+📁 frontend
+  📄 tsconfig.tsbuildinfo
+  📄 tsconfig.app.json
+  📄 index.html
+  📄 tsconfig.json
+  📄 tailwind.config.js
+  📄 package.json
+  📄 tsconfig.node.json
+  📄 README.md
+  📄 postcss.config.js
+📁 src
+  📄 index.css
+  📄 App.css
+  📄 main.tsx
+  📄 App.tsx
+📁 ui
+  📄 badge.tsx
+  📄 FileUpload.tsx
+  📄 input.tsx
+  📄 dialog.tsx
+  📄 button.tsx
+  📄 card.tsx
+  📄 label.tsx
+  📄 progress.tsx
+📁 layout
+  📄 AppLayout.tsx
+📁 financiero
+  📄 FacturaDetailPage.tsx
+  📄 Sidebar.tsx
+  📄 FinancieroPage.tsx
+📁 app
+  📄 App.tsx
+📁 produccion
+  📄 PedidoDetailPage.tsx
+📁 proyectos
+  📄 ProyectoDetailPage.tsx
+  📄 ProduccionPage.tsx
+  📄 ProyectosPage.tsx
+  📄 NuevoProyectoModal.tsx
+📁 comercial
+  📄 ComercialPage.tsx
+📁 arquitectura
+  📄 ArquitecturaPage.tsx
+  📄 ModelViewer3D.tsx
+📁 dashboard
+  📄 DashboardPage.tsx
+📁 rrhh
+  📄 RrhhPage.tsx
+  📄 EmpleadoDetailPage.tsx
+📁 auth
+  📄 ProtectedRoute.tsx
+📁 obra
+  📄 ObraPage.tsx
+  📄 useAuth.tsx
+  📄 LoginPage.tsx
+  📄 NuevaBitacoraModal.tsx
+  📄 BitacoraDetailPage.tsx
+
+============================================================
+File Contents:
+============================================================
+
+--- File: tsconfig.tsbuildinfo ---
+{"root":["./src/App.tsx","./src/main.tsx","./src/app/App.tsx","./src/components/layout/AppLayout.tsx","./src/components/layout/Sidebar.tsx","./src/components/ui/FileUpload.tsx","./src/components/ui/badge.tsx","./src/components/ui/button.tsx","./src/components/ui/card.tsx","./src/components/ui/dialog.tsx","./src/components/ui/input.tsx","./src/components/ui/label.tsx","./src/components/ui/progress.tsx","./src/features/arquitectura/ArquitecturaPage.tsx","./src/features/arquitectura/ModelViewer3D.tsx","./src/features/auth/LoginPage.tsx","./src/features/auth/ProtectedRoute.tsx","./src/features/auth/useAuth.tsx","./src/features/auth/usePermissions.ts","./src/features/comercial/ComercialPage.tsx","./src/features/dashboard/DashboardPage.tsx","./src/features/financiero/FacturaDetailPage.tsx","./src/features/financiero/FinancieroPage.tsx","./src/features/obra/BitacoraDetailPage.tsx","./src/features/obra/NuevaBitacoraModal.tsx","./src/features/obra/ObraPage.tsx","./src/features/produccion/PedidoDetailPage.tsx","./src/features/produccion/ProduccionPage.tsx","./src/features/proyectos/NuevoProyectoModal.tsx","./src/features/proyectos/ProyectoDetailPage.tsx","./src/features/proyectos/ProyectosPage.tsx","./src/features/rrhh/EmpleadoDetailPage.tsx","./src/features/rrhh/RrhhPage.tsx","./src/hooks/useNetworkStatus.ts","./src/lib/api.ts","./src/lib/offlineQueue.ts","./src/lib/queryClient.ts","./src/lib/utils.ts"],"errors":true,"version":"6.0.3"}
+
+--- File: tsconfig.app.json ---
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "allowArbitraryExtensions": true,
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+
+
+--- File: index.html ---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="description" content="Sistema de gestión del holding" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <title>Holding Ro</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+--- File: tsconfig.json ---
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
+
+
+--- File: tailwind.config.js ---
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: ["class"],
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+    },
+  },
+  plugins: [],
+}
+
+
+--- File: package.json ---
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.23",
+    "@radix-ui/react-label": "^2.1.15",
+    "@radix-ui/react-select": "^2.3.7",
+    "@radix-ui/react-slot": "^1.3.3",
+    "@tanstack/react-query": "^5.101.4",
+    "autoprefixer": "^10.5.4",
+    "axios": "^1.18.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.27.0",
+    "postcss": "^8.5.23",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-is": "^19.2.8",
+    "react-router-dom": "^7.11.0",
+    "recharts": "^3.10.1",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^3.4.19",
+    "vite-plugin-pwa": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  }
+}
+
+
+--- File: tsconfig.node.json ---
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "module": "nodenext",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts"]
+}
+
+
+--- File: README.md ---
+# React + TypeScript + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
+```
+
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+
+--- File: postcss.config.js ---
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+
+--- File: index.css ---
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+
+--- File: App.css ---
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+
+--- File: main.tsx ---
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './app/App'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+
+--- File: App.tsx ---
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png'
+import './App.css'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
+        </button>
+      </section>
+
+      <div className="ticks"></div>
+
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div className="ticks"></div>
+      <section id="spacer"></section>
+    </>
+  )
+}
+
+export default App
+
+
+--- File: badge.tsx ---
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const badgeVariants = cva(
+  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  {
+    variants: {
+      variant: {
+        default: "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+        secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive: "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
+        outline: "text-foreground",
+        success: "border-transparent bg-green-500 text-white",
+        warning: "border-transparent bg-amber-500 text-white",
+      },
+    },
+    defaultVariants: { variant: "default" },
+  }
+)
+
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {}
+
+function Badge({ className, variant, ...props }: BadgeProps) {
+  return <div className={cn(badgeVariants({ variant }), className)} {...props} />
+}
+
+export { Badge, badgeVariants }
+
+
+--- File: FileUpload.tsx ---
+import { useState, useRef } from 'react'
+import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
+import { toast } from 'sonner'
+import { Upload, X, File, Image, FileText, Box, Loader2 } from 'lucide-react'
+import { api } from '@/lib/api'
+
+interface FileUploadProps {
+  accept?: string
+  fileType: 'foto' | 'modelo_3d' | 'pdf' | 'documento'
+  maxFiles?: number
+  onUploadComplete?: (fileData: FileData) => void
+  onUploadError?: (error: string) => void
+  projectId?: string
+  label?: string
+  description?: string
+}
+
+interface FileData {
+  file_url: string
+  file_path: string
+  file_name: string
+  file_size: number
+  file_type: string
+  uploaded_at: string
+}
+
+export function FileUpload({
+  accept,
+  fileType,
+  maxFiles = 1,
+  onUploadComplete,
+  onUploadError,
+  projectId,
+  label,
+  description
+}: FileUploadProps) {
+  const [uploading, setUploading] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [uploadedFiles, setUploadedFiles] = useState<FileData[]>([])
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const getFileIcon = (type: string) => {
+    switch (type) {
+      case 'foto': return <Image className="h-5 w-5" />
+      case 'modelo_3d': return <Box className="h-5 w-5" />
+      case 'pdf': return <FileText className="h-5 w-5" />
+      default: return <File className="h-5 w-5" />
+    }
+  }
+
+  const getFileIconFromName = (filename: string) => {
+    const ext = filename.split('.').pop()?.toLowerCase()
+    if (['jpg', 'jpeg', 'png', 'webp'].includes(ext || '')) return <Image className="h-5 w-5" />
+    if (ext === 'usdz') return <Box className="h-5 w-5" />
+    if (ext === 'pdf') return <FileText className="h-5 w-5" />
+    return <File className="h-5 w-5" />
+  }
+
+  const handleFileSelect = async (files: FileList | null) => {
+    if (!files || files.length === 0) return
+
+    const filesArray = Array.from(files)
+    
+    // Validar número máximo de archivos
+    if (uploadedFiles.length + filesArray.length > maxFiles) {
+      toast.error(`Solo se permiten ${maxFiles} archivo(s)`, {
+        description: `Ya tienes ${uploadedFiles.length} archivo(s) subido(s)`
+      })
+      return
+    }
+
+    setUploading(true)
+    setProgress(0)
+
+    for (const file of filesArray) {
+      try {
+        // Validar tamaño
+        const maxSize = fileType === 'modelo_3d' ? 50 * 1024 * 1024 : 10 * 1024 * 1024
+        if (file.size > maxSize) {
+          toast.error(`Archivo muy grande: ${file.name}`, {
+            description: `El tamaño máximo es ${maxSize / (1024 * 1024)}MB`
+          })
+          continue
+        }
+
+        // Crear FormData
+        const formData = new FormData()
+        formData.append('file', file)
+        formData.append('type', fileType)
+        if (projectId) {
+          formData.append('project_id', projectId)
+        }
+
+        // Simular progreso (ya que no tenemos eventos de progreso reales en fetch)
+        const progressInterval = setInterval(() => {
+          setProgress(prev => {
+            if (prev >= 90) {
+              clearInterval(progressInterval)
+              return 90
+            }
+            return prev + 10
+          })
+        }, 200)
+
+        // Subir archivo
+        const response = await api.post('/core/upload/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+
+        clearInterval(progressInterval)
+        setProgress(100)
+
+        if (response.data.success) {
+          const fileData: FileData = response.data
+          setUploadedFiles(prev => [...prev, fileData])
+          toast.success('Archivo subido correctamente', {
+            description: file.file_name
+          })
+          onUploadComplete?.(fileData)
+        }
+
+        setTimeout(() => setProgress(0), 500)
+
+      } catch (error: any) {
+        console.error('Error uploading file:', error)
+        const errorMessage = error.response?.data?.error || 'Error al subir el archivo'
+        toast.error(errorMessage)
+        onUploadError?.(errorMessage)
+      }
+    }
+
+    setUploading(false)
+    
+    // Limpiar input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
+  const handleRemoveFile = async (fileData: FileData) => {
+    try {
+      await api.delete('/core/upload/delete/', {
+        data: { file_path: fileData.file_path }
+      })
+      
+      setUploadedFiles(prev => prev.filter(f => f.file_path !== fileData.file_path))
+      toast.success('Archivo eliminado')
+    } catch (error) {
+      toast.error('Error al eliminar el archivo')
+    }
+  }
+
+  const getAcceptString = () => {
+    if (accept) return accept
+    switch (fileType) {
+      case 'foto': return 'image/*'
+      case 'modelo_3d': return '.usdz,.gltf,.glb'
+      case 'pdf': return '.pdf'
+      case 'documento': return '.pdf,.doc,.docx'
+      default: return '*/*'
+    }
+  }
+
+  return (
+    <div className="space-y-4">
+      {label && (
+        <div>
+          <label className="text-sm font-medium">{label}</label>
+          {description && (
+            <p className="text-xs text-muted-foreground mt-1">{description}</p>
+          )}
+        </div>
+      )}
+
+      {/* Área de upload */}
+      <div
+        className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors
+          ${uploading ? 'border-primary bg-primary/5' : 'border-muted-foreground/25 hover:border-primary hover:bg-primary/5'}`}
+        onClick={() => !uploading && fileInputRef.current?.click()}
+      >
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept={getAcceptString()}
+          multiple={maxFiles > 1}
+          onChange={(e) => handleFileSelect(e.target.files)}
+          className="hidden"
+          disabled={uploading}
+        />
+        
+        {uploading ? (
+          <div className="space-y-3">
+            <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+            <p className="text-sm text-muted-foreground">Subiendo archivo...</p>
+            <Progress value={progress} className="w-full max-w-xs mx-auto" />
+          </div>
+        ) : (
+          <div className="space-y-2">
+            <Upload className="h-8 w-8 mx-auto text-muted-foreground" />
+            <p className="text-sm font-medium">
+              Haz clic o arrastra archivos aquí
+            </p>
+            <p className="text-xs text-muted-foreground">
+              {fileType === 'foto' && 'JPG, PNG, WebP (máx. 10MB)'}
+              {fileType === 'modelo_3d' && 'USDZ, GLTF, GLB (máx. 50MB)'}
+              {fileType === 'pdf' && 'PDF (máx. 10MB)'}
+              {fileType === 'documento' && 'PDF, DOC, DOCX (máx. 10MB)'}
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Archivos subidos */}
+      {uploadedFiles.length > 0 && (
+        <div className="space-y-2">
+          {uploadedFiles.map((file, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between p-3 bg-muted rounded-lg border"
+            >
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                {getFileIconFromName(file.file_name)}
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium truncate">{file.file_name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {(file.file_size / 1024).toFixed(1)} KB
+                  </p>
+                </div>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleRemoveFile(file)
+                }}
+                className="flex-shrink-0"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+
+--- File: input.tsx ---
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
+
+export { Input }
+
+
+--- File: dialog.tsx ---
+import * as React from "react"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+import { X } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+const Dialog = DialogPrimitive.Root
+const DialogTrigger = DialogPrimitive.Trigger
+const DialogPortal = DialogPrimitive.Portal
+const DialogClose = DialogPrimitive.Close
+
+const DialogOverlay = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Overlay
+    ref={ref}
+    className={cn("fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0", className)}
+    {...props}
+  />
+))
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
+
+const DialogContent = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <DialogPortal>
+    <DialogOverlay />
+    <DialogPrimitive.Content
+      ref={ref}
+      className={cn("fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg", className)}
+      {...props}
+    >
+      {children}
+      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+        <X className="h-4 w-4" />
+        <span className="sr-only">Close</span>
+      </DialogPrimitive.Close>
+    </DialogPrimitive.Content>
+  </DialogPortal>
+))
+DialogContent.displayName = DialogPrimitive.Content.displayName
+
+const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)} {...props} />
+)
+DialogHeader.displayName = "DialogHeader"
+
+const DialogTitle = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Title ref={ref} className={cn("text-lg font-semibold leading-none tracking-tight", className)} {...props} />
+))
+DialogTitle.displayName = DialogPrimitive.Title.displayName
+
+export { Dialog, DialogPortal, DialogOverlay, DialogClose, DialogTrigger, DialogContent, DialogHeader, DialogTitle }
+
+
+--- File: button.tsx ---
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+        outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
+        icon: "h-9 w-9",
+      },
+    },
+    defaultVariants: { variant: "default", size: "default" },
+  }
+)
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+  }
+)
+Button.displayName = "Button"
+
+export { Button, buttonVariants }
+
+
+--- File: card.tsx ---
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("rounded-xl border bg-card text-card-foreground shadow", className)} {...props} />
+  )
+)
+Card.displayName = "Card"
+
+const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
+  )
+)
+CardHeader.displayName = "CardHeader"
+
+const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, ...props }, ref) => (
+    <h3 ref={ref} className={cn("font-semibold leading-none tracking-tight", className)} {...props} />
+  )
+)
+CardTitle.displayName = "CardTitle"
+
+const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  )
+)
+CardContent.displayName = "CardContent"
+
+export { Card, CardHeader, CardTitle, CardContent }
+
+
+--- File: label.tsx ---
+import * as React from "react"
+import * as LabelPrimitive from "@radix-ui/react-label"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const labelVariants = cva(
+  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+)
+
+const Label = React.forwardRef<
+  React.ComponentRef<typeof LabelPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & VariantProps<typeof labelVariants>
+>(({ className, ...props }, ref) => (
+  <LabelPrimitive.Root ref={ref} className={cn(labelVariants(), className)} {...props} />
+))
+Label.displayName = LabelPrimitive.Root.displayName
+
+export { Label }
+
+
+--- File: progress.tsx ---
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  value?: number
+}
+
+export function Progress({ value = 0, className, ...props }: ProgressProps) {
+  return (
+    <div
+      className={cn("relative h-2 w-full overflow-hidden rounded-full bg-secondary", className)}
+      {...props}
+    >
+      <div
+        className="h-full w-full flex-1 bg-primary transition-all"
+        style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+      />
+    </div>
+  )
+}
+
+
+--- File: AppLayout.tsx ---
+import { Outlet } from 'react-router-dom'
+import { Sidebar } from './Sidebar'
+
+export function AppLayout() {
+  return (
+    <div className="flex h-screen bg-background">
+      <Sidebar />
+      <main className="flex-1 overflow-auto">
+        <div className="p-6 md:p-8">
+          <Outlet />
+        </div>
+      </main>
+    </div>
+  )
+}
+
+
+--- File: FacturaDetailPage.tsx ---
+import { useParams, useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
+import { api } from '@/lib/api'
+import { 
+  ArrowLeft, Calendar, DollarSign, Building2, FileText, 
+  CheckCircle2, AlertCircle, TrendingUp 
+} from 'lucide-react'
+import { Loader2 } from 'lucide-react'
+
+interface FacturaDetalle {
+  id: number
+  concepto: string
+  monto: number
+  empresa_nombre: string
+  modulo_origen_display: string
+}
+
+interface Factura {
+  id: string
+  cliente: string
+  cliente_nombre: string
+  fecha: string
+  folio_fiscal: string
+  pagada: boolean
+  total: number
+  creado_en: string
+  detalles: FacturaDetalle[]
+}
+
+export function FacturaDetailPage() {
+  const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+
+  const { data: factura, isLoading, error } = useQuery({
+    queryKey: ['factura', id],
+    queryFn: async () => {
+      const { data } = await api.get(`/financiero/facturas/${id}/`)
+      return data
+    },
+    enabled: !!id,
+  })
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  if (error || !factura) {
+    return (
+      <Card className="border-destructive">
+        <CardContent className="pt-6">
+          <p className="text-sm text-destructive">Error al cargar la factura</p>
+          <Button variant="outline" className="mt-4" onClick={() => navigate('/financiero')}>
+            <ArrowLeft className="mr-2 h-4 w-4" /> Volver
+          </Button>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value)
+  }
+
+  // Calcular porcentaje por empresa
+  const total = Number(factura.total) || 0
+  const detallesConPorcentaje = (factura.detalles || []).map((d) => ({
+    ...d,
+    porcentaje: total > 0 ? (Number(d.monto) / total) * 100 : 0
+  }))
+
+  return (
+    <div className="space-y-6 p-6">
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <Button variant="outline" size="icon" onClick={() => navigate('/financiero')}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold tracking-tight">Factura #{factura.folio_fiscal.slice(0, 8)}...</h1>
+          <p className="text-muted-foreground">{factura.cliente_nombre}</p>
+        </div>
+        <Badge 
+          variant={factura.pagada ? 'success' : 'warning'}
+          className="text-sm"
+        >
+          {factura.pagada ? 'Pagada' : 'Pendiente de pago'}
+        </Badge>
+      </div>
+
+      {/* Info General */}
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Total Facturado</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <DollarSign className="h-5 w-5 text-green-600" />
+              <span className="text-3xl font-bold text-green-600">
+                {formatCurrency(Number(factura.total))}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Fecha de Emisión</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-5 w-5 text-blue-600" />
+              <span className="text-xl font-semibold">
+                {new Date(factura.fecha).toLocaleDateString('es-MX', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Folio Fiscal</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <FileText className="h-5 w-5 text-purple-600" />
+              <span className="text-sm font-mono break-all">
+                {factura.folio_fiscal}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Desglose por Empresa (La joya de la corona) */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Building2 className="h-5 w-5 text-primary" />
+            Desglose Contable por Empresa del Holding
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {detallesConPorcentaje.length > 0 ? (
+            <div className="space-y-6">
+              {detallesConPorcentaje.map((detalle) => (
+                <div key={detalle.id} className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <Building2 className="h-5 w-5 text-muted-foreground" />
+                      <div>
+                        <p className="font-semibold">{detalle.empresa_nombre}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {detalle.concepto} • {detalle.modulo_origen_display}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-bold">{formatCurrency(Number(detalle.monto))}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {detalle.porcentaje.toFixed(1)}% del total
+                      </p>
+                    </div>
+                  </div>
+                  <Progress value={detalle.porcentaje} className="h-2" />
+                </div>
+              ))}
+
+              {/* Total */}
+              <div className="border-t pt-4 mt-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    <span className="font-bold text-lg">Total Consolidado</span>
+                  </div>
+                  <span className="text-2xl font-bold text-green-600">
+                    {formatCurrency(total)}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground text-center py-8">
+              Sin detalles registrados
+            </p>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Estado de Pago */}
+      <Card className={factura.pagada ? 'border-green-200 bg-green-50 dark:bg-green-950/20' : 'border-amber-200 bg-amber-50 dark:bg-amber-950/20'}>
+        <CardContent className="pt-6">
+          <div className="flex items-center gap-3">
+            {factura.pagada ? (
+              <>
+                <CheckCircle2 className="h-8 w-8 text-green-600" />
+                <div>
+                  <p className="font-semibold text-green-900 dark:text-green-400 text-lg">
+                    ✓ Factura Pagada
+                  </p>
+                  <p className="text-sm text-green-800 dark:text-green-300">
+                    El pago ha sido recibido y registrado
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <AlertCircle className="h-8 w-8 text-amber-600" />
+                <div>
+                  <p className="font-semibold text-amber-900 dark:text-amber-400 text-lg">
+                     Pendiente de Pago
+                  </p>
+                  <p className="text-sm text-amber-800 dark:text-amber-300">
+                    Esta factura requiere seguimiento de cobro
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+
+--- File: Sidebar.tsx ---
+import { Link, useLocation } from 'react-router-dom'
+import {
+  LayoutDashboard, FolderKanban, Palette, HardHat, Factory,
+  DollarSign, Users, LogOut, Building2, Settings, TrendingUp
+} from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useAuth } from '@/features/auth/useAuth'
+import { cn } from '@/lib/utils'
+
+const modulos = [
+  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/comercial', label: 'Comercial', icon: TrendingUp },
+  { to: '/proyectos', label: 'Proyectos', icon: FolderKanban },
+  { to: '/arquitectura', label: 'Arquitectura', icon: Palette },
+  { to: '/obra', label: 'Obra', icon: HardHat },
+  { to: '/produccion', label: 'Producción', icon: Factory },
+  { to: '/financiero', label: 'Financiero', icon: DollarSign },
+  { to: '/rrhh', label: 'Recursos Humanos', icon: Users },
+  { to: '/core', label: 'Administración', icon: Settings },
+]
+
+export function Sidebar() {
+  const { user, logout } = useAuth()
+  const location = useLocation()
+
+  return (
+    <aside className="flex h-screen w-64 flex-col border-r bg-card">
+      {/* Logo */}
+      <div className="flex h-16 items-center gap-2 border-b px-6">
+        <Building2 className="h-6 w-6 text-primary" />
+        <span className="text-lg font-bold">Holding</span>
+      </div>
+
+      {/* Info del usuario */}
+      <div className="border-b px-6 py-4">
+        <p className="font-semibold">{user?.nombre || 'Usuario'}</p>
+        <p className="text-sm text-muted-foreground">{user?.puesto || 'Director General'}</p>
+      </div>
+
+      {/* Menú de módulos */}
+      <nav className="flex-1 space-y-1 p-4">
+        {modulos.map((modulo) => {
+          const isActive = location.pathname === modulo.to
+          return (
+            <Link
+              key={modulo.to}
+              to={modulo.to}
+              className={cn(
+                'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                isActive
+                  ? 'bg-primary text-primary-foreground'
+                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+              )}
+            >
+              <modulo.icon className="h-5 w-5" />
+              {modulo.label}
+            </Link>
+          )
+        })}
+      </nav>
+
+      {/* Botón de cerrar sesión */}
+      <div className="border-t p-4">
+        <Button
+          variant="outline"
+          className="w-full gap-2"
+          onClick={logout}
+        >
+          <LogOut className="h-4 w-4" />
+          Cerrar sesión
+        </Button>
+      </div>
+    </aside>
+  )
+}
+
+
+--- File: FinancieroPage.tsx ---
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Progress } from '@/components/ui/progress'
+import { api } from '@/lib/api'
+import { 
+  DollarSign, Search, Loader2, Calendar, TrendingUp, 
+  AlertCircle, CheckCircle2, Clock, Building2, FileText 
+} from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+
+interface FacturaDetalle {
+  id: number
+  concepto: string
+  monto: number
+  empresa_nombre: string
+  modulo_origen_display: string
+}
+
+interface Factura {
+  id: string
+  cliente: string
+  cliente_nombre: string
+  fecha: string
+  folio_fiscal: string
+  pagada: boolean
+  total: number
+  creado_en: string
+  detalles: FacturaDetalle[]
+}
+
+interface CuentaPorCobrar {
+  id: string
+  factura: string
+  cliente_nombre: string
+  fecha_vencimiento: string
+  saldo_pendiente: number
+}
+
+export function FinancieroPage() {
+  const [search, setSearch] = useState('')
+  const [filtroPagada, setFiltroPagada] = useState('')
+  const navigate = useNavigate()
+
+  const { data: facturas, isLoading: loadingFacturas } = useQuery({
+    queryKey: ['facturas', filtroPagada],
+    queryFn: async () => {
+      const params = new URLSearchParams()
+      if (filtroPagada) params.append('pagada', filtroPagada)
+      
+      const { data } = await api.get(`/financiero/facturas/?${params.toString()}`)
+      return data.results || data
+    },
+  })
+
+  const { data: cxc } = useQuery({
+    queryKey: ['cxc'],
+    queryFn: async () => {
+      const { data } = await api.get('/financiero/cxc/')
+      return data.results || data
+    },
+  })
+
+  const facturasFiltradas = (facturas || []).filter((f: Factura) =>
+    f.cliente_nombre.toLowerCase().includes(search.toLowerCase()) ||
+    f.folio_fiscal.toLowerCase().includes(search.toLowerCase())
+  )
+
+  // Calcular KPIs
+  const totalFacturado = (facturasFiltradas || []).reduce((acc: number, f: Factura) => acc + Number(f.total || 0), 0)
+  const facturasPagadas = (facturasFiltradas || []).filter((f: Factura) => f.pagada).length
+  const facturasPendientes = (facturasFiltradas || []).filter((f: Factura) => !f.pagada).length
+  const totalCxC = (cxc || []).reduce((acc: number, c: CuentaPorCobrar) => acc + Number(c.saldo_pendiente || 0), 0)
+
+  // Facturas vencidas
+  const hoy = new Date()
+  const facturasVencidas = (cxc || []).filter((c: CuentaPorCobrar) => {
+    const vencimiento = new Date(c.fecha_vencimiento)
+    return vencimiento < hoy && Number(c.saldo_pendiente) > 0
+  })
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value)
+  }
+
+  return (
+    <div className="space-y-6 p-6">
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Financiero</h1>
+        <p className="text-muted-foreground">Facturación, cuentas por cobrar y consolidado</p>
+      </div>
+
+      {/* KPIs Principales */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Facturado</CardTitle>
+            <DollarSign className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatCurrency(totalFacturado)}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              {facturasFiltradas.length} factura(s)
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">CxC Pendiente</CardTitle>
+            <Clock className="h-4 w-4 text-amber-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatCurrency(totalCxC)}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              {cxc?.length || 0} cuenta(s)
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Facturas Pagadas</CardTitle>
+            <CheckCircle2 className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{facturasPagadas}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              {facturasFiltradas.length > 0 
+                ? `${Math.round((facturasPagadas / facturasFiltradas.length) * 100)}% del total`
+                : '0%'
+              }
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className={facturasVencidas.length > 0 ? 'border-red-200 dark:border-red-900' : ''}>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Facturas Vencidas</CardTitle>
+            <AlertCircle className="h-4 w-4 text-red-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{facturasVencidas.length}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Requieren atención inmediata
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Filtros */}
+      <Card>
+        <CardContent className="pt-6">
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Buscar por cliente o folio fiscal..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="pl-9"
+                />
+              </div>
+            </div>
+            <select
+              value={filtroPagada}
+              onChange={(e) => setFiltroPagada(e.target.value)}
+              className="flex h-9 w-[200px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm"
+            >
+              <option value="">Todas las facturas</option>
+              <option value="true">Pagadas</option>
+              <option value="false">Pendientes</option>
+            </select>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Lista de Facturas */}
+      {loadingFacturas ? (
+        <div className="flex h-40 items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {facturasFiltradas.map((factura: Factura) => (
+            <Card
+              key={factura.id}
+              className={`cursor-pointer hover:shadow-lg transition-all ${
+                !factura.pagada ? 'border-amber-200 dark:border-amber-900' : ''
+              }`}
+              onClick={() => navigate(`/financiero/${factura.id}`)}
+            >
+              <CardContent className="pt-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <FileText className="h-5 w-5 text-primary" />
+                      <h3 className="text-lg font-semibold">
+                        Factura #{factura.folio_fiscal.slice(0, 8)}...
+                      </h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-1">{factura.cliente_nombre}</p>
+                    <p className="text-xs text-muted-foreground">
+                      Emitida: {new Date(factura.fecha).toLocaleDateString('es-MX')}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-green-600">
+                      {formatCurrency(Number(factura.total))}
+                    </p>
+                    <Badge 
+                      variant={factura.pagada ? 'success' : 'warning'}
+                      className="mt-2"
+                    >
+                      {factura.pagada ? 'Pagada' : 'Pendiente'}
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Desglose por empresa */}
+                {factura.detalles && factura.detalles.length > 0 && (
+                  <div className="border-t pt-4 mt-4">
+                    <p className="text-xs font-medium text-muted-foreground mb-2">
+                      Desglose por empresa:
+                    </p>
+                    <div className="space-y-2">
+                      {factura.detalles.map((detalle) => (
+                        <div key={detalle.id} className="flex items-center justify-between text-sm">
+                          <div className="flex items-center gap-2">
+                            <Building2 className="h-4 w-4 text-muted-foreground" />
+                            <span>{detalle.empresa_nombre}</span>
+                            <Badge variant="outline" className="text-xs">
+                              {detalle.modulo_origen_display}
+                            </Badge>
+                          </div>
+                          <span className="font-medium">
+                            {formatCurrency(Number(detalle.monto))}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+
+          {facturasFiltradas.length === 0 && !loadingFacturas && (
+            <Card>
+              <CardContent className="pt-6 text-center">
+                <DollarSign className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                <p className="text-muted-foreground">No se encontraron facturas</p>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+
+--- File: App.tsx ---
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from 'sonner'
+import { queryClient } from '@/lib/queryClient'
+import { AppLayout } from '@/components/layout/AppLayout'
+import { LoginPage } from '@/features/auth/LoginPage'
+import { ProtectedRoute } from '@/features/auth/ProtectedRoute'
+import { DashboardPage } from '@/features/dashboard/DashboardPage'
+import { ProyectosPage } from '@/features/proyectos/ProyectosPage'
+import { ProyectoDetailPage } from '@/features/proyectos/ProyectoDetailPage'
+import { ArquitecturaPage } from '@/features/arquitectura/ArquitecturaPage'
+import { ObraPage } from '@/features/obra/ObraPage'
+import { BitacoraDetailPage } from '@/features/obra/BitacoraDetailPage'
+import { ProduccionPage } from '@/features/produccion/ProduccionPage'
+import { PedidoDetailPage } from '@/features/produccion/PedidoDetailPage'
+import { FinancieroPage } from '@/features/financiero/FinancieroPage'
+import { FacturaDetailPage } from '@/features/financiero/FacturaDetailPage'
+import { RrhhPage } from '@/features/rrhh/RrhhPage'
+import { EmpleadoDetailPage } from '@/features/rrhh/EmpleadoDetailPage'
+import { ComercialPage } from '@/features/comercial/ComercialPage'
+
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<DashboardPage />} />
+            <Route path="proyectos" element={<ProyectosPage />} />
+            <Route path="proyectos/:id" element={<ProyectoDetailPage />} />
+            <Route path="arquitectura" element={<ArquitecturaPage />} />
+            <Route path="obra" element={<ObraPage />} />
+            <Route path="obra/:id" element={<BitacoraDetailPage />} />
+            <Route path="produccion" element={<ProduccionPage />} />
+            <Route path="produccion/:id" element={<PedidoDetailPage />} />
+            <Route path="financiero" element={<FinancieroPage />} />
+            <Route path="financiero/:id" element={<FacturaDetailPage />} />
+            <Route path="rrhh" element={<RrhhPage />} />
+            <Route path="rrhh/:id" element={<EmpleadoDetailPage />} />
+            <Route path="comercial" element={<ComercialPage />} />
+          </Route>
+        </Routes>
+        <Toaster position="top-right" />
+      </BrowserRouter>
+    </QueryClientProvider>
+  )
+}
+
+
+--- File: PedidoDetailPage.tsx ---
+import { useParams, useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { api } from '@/lib/api'
+import { ArrowLeft, Calendar, User, Package, Clock, AlertCircle } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
+
+interface Pedido {
+  id: string
+  cliente: string
+  cliente_nombre: string
+  proyecto: string | null
+  proyecto_nombre: string
+  tipo_objeto: string
+  especificaciones: string
+  responsable_taller: string | null
+  responsable_nombre: string
+  fecha_entrega: string
+  estatus: string
+  estatus_display: string
+  creado_en: string
+}
+
+export function PedidoDetailPage() {
+  const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+
+  const { data: pedido, isLoading, error } = useQuery({
+    queryKey: ['pedido', id],
+    queryFn: async () => {
+      const { data } = await api.get(`/produccion/pedidos/${id}/`)
+      return data
+    },
+    enabled: !!id,
+  })
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  if (error || !pedido) {
+    return (
+      <Card className="border-destructive">
+        <CardContent className="pt-6">
+          <p className="text-sm text-destructive">Error al cargar el pedido</p>
+          <Button variant="outline" className="mt-4" onClick={() => navigate('/produccion')}>
+            <ArrowLeft className="mr-2 h-4 w-4" /> Volver
+          </Button>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  const diasRestantes = Math.ceil(
+    (new Date(pedido.fecha_entrega).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+  )
+  const urgente = diasRestantes <= 7 && diasRestantes >= 0 && pedido.estatus !== 'entregado'
+
+  return (
+    <div className="space-y-6 p-6">
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <Button variant="outline" size="icon" onClick={() => navigate('/produccion')}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold tracking-tight">{pedido.tipo_objeto}</h1>
+          <p className="text-muted-foreground">{pedido.cliente_nombre}</p>
+        </div>
+        <Badge 
+          variant={
+            pedido.estatus === 'entregado' ? 'success' :
+            pedido.estatus === 'taller' ? 'warning' :
+            'secondary'
+          }
+          className="text-sm"
+        >
+          {pedido.estatus_display}
+        </Badge>
+      </div>
+
+      {/* Info General */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Cliente</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-lg font-semibold">{pedido.cliente_nombre}</p>
+          </CardContent>
+        </Card>
+
+        {pedido.proyecto_nombre && (
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Proyecto</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg font-semibold">{pedido.proyecto_nombre}</p>
+            </CardContent>
+          </Card>
+        )}
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Responsable</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4 text-purple-600" />
+              <span className="text-lg font-semibold">
+                {pedido.responsable_nombre || 'Sin asignar'}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Fecha de Entrega</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-blue-600" />
+              <span className="text-lg font-semibold">
+                {new Date(pedido.fecha_entrega).toLocaleDateString('es-MX')}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Alerta de urgencia */}
+      {urgente && (
+        <Card className="border-red-200 bg-red-50 dark:bg-red-950/20 dark:border-red-900">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-3">
+              <AlertCircle className="h-6 w-6 text-red-600" />
+              <div>
+                <p className="font-semibold text-red-900 dark:text-red-400">
+                  ⚠️ Pedido urgente
+                </p>
+                <p className="text-sm text-red-800 dark:text-red-300">
+                  Quedan {diasRestantes} días para la entrega
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Especificaciones */}
+      {pedido.especificaciones && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Package className="h-5 w-5 text-primary" />
+              Especificaciones Técnicas
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="p-4 bg-muted rounded-md">
+              <p className="text-sm whitespace-pre-wrap">{pedido.especificaciones}</p>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Timeline de estado */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Clock className="h-5 w-5 text-primary" />
+            Estado del Pedido
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {[
+              { estatus: 'diseno', label: 'En Diseño', icon: '📐' },
+              { estatus: 'taller', label: 'En Taller', icon: '🔨' },
+              { estatus: 'entrega', label: 'En Entrega', icon: '🚚' },
+              { estatus: 'entregado', label: 'Entregado', icon: '✅' },
+            ].map((paso, index) => {
+              const estados = ['diseno', 'taller', 'entrega', 'entregado']
+              const estatusActual = estados.indexOf(pedido.estatus)
+              const pasoActual = estados.indexOf(paso.estatus)
+              const completado = pasoActual <= estatusActual
+              const actual = pasoActual === estatusActual
+
+              return (
+                <div key={paso.estatus} className="flex items-center gap-4">
+                  <div className={`flex h-10 w-10 items-center justify-center rounded-full ${
+                    actual ? 'bg-primary text-primary-foreground' :
+                    completado ? 'bg-green-500 text-white' :
+                    'bg-muted text-muted-foreground'
+                  }`}>
+                    {paso.icon}
+                  </div>
+                  <div className="flex-1">
+                    <p className={`font-medium ${actual ? 'text-primary' : completado ? 'text-foreground' : 'text-muted-foreground'}`}>
+                      {paso.label}
+                    </p>
+                    {actual && (
+                      <p className="text-xs text-muted-foreground">Estado actual</p>
+                    )}
+                  </div>
+                  {index < 3 && (
+                    <div className={`h-8 w-0.5 ${completado ? 'bg-green-500' : 'bg-muted'}`} />
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+
+--- File: ProyectoDetailPage.tsx ---
+import { useParams, useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Progress } from '@/components/ui/progress'
+import { Button } from '@/components/ui/button'
+import { api } from '@/lib/api'
+import { ArrowLeft, Calendar, DollarSign, User, Building2, Loader2 } from 'lucide-react'
+
+interface Fase {
+  id: number
+  nombre: string
+  porcentaje_avance: number
+  fecha_compromiso: string
+  completada: boolean
+}
+
+interface Proyecto {
+  id: string
+  nombre: string
+  cliente_nombre: string
+  empresa_nombre: string
+  presupuesto_total: number
+  fecha_inicio: string
+  fecha_fin_estimada: string
+  responsable_nombre: string
+  activo: boolean
+  avance_promedio: number
+  fases: Fase[]
+}
+
+export function ProyectoDetailPage() {
+  const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+
+  const { data: proyecto, isLoading, error } = useQuery({
+    queryKey: ['proyecto', id],
+    queryFn: async () => {
+      const { data } = await api.get(`/proyectos/proyectos/${id}/`)
+      return data
+    },
+    enabled: !!id,
+  })
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  if (error || !proyecto) {
+    return (
+      <Card className="border-destructive">
+        <CardContent className="pt-6">
+          <p className="text-sm text-destructive">Error al cargar el proyecto</p>
+          <Button variant="outline" className="mt-4" onClick={() => navigate('/proyectos')}>
+            <ArrowLeft className="mr-2 h-4 w-4" /> Volver
+          </Button>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <Button variant="outline" size="icon" onClick={() => navigate('/proyectos')}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold tracking-tight">{proyecto.nombre}</h1>
+          <p className="text-muted-foreground">{proyecto.cliente_nombre} • {proyecto.empresa_nombre}</p>
+        </div>
+        <Badge variant={proyecto.activo ? "success" : "secondary"} className="text-sm">
+          {proyecto.activo ? "Activo" : "Inactivo"}
+        </Badge>
+      </div>
+
+      {/* Info General */}
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Presupuesto</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <DollarSign className="h-4 w-4 text-green-600" />
+              <span className="text-2xl font-bold">${Number(proyecto.presupuesto_total).toLocaleString()}</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Inicio</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-blue-600" />
+              <span className="text-lg font-semibold">{new Date(proyecto.fecha_inicio).toLocaleDateString('es-MX')}</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Fin estimado</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-amber-600" />
+              <span className="text-lg font-semibold">{new Date(proyecto.fecha_fin_estimada).toLocaleDateString('es-MX')}</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Responsable</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4 text-purple-600" />
+              <span className="text-lg font-semibold">{proyecto.responsable_nombre || 'Sin asignar'}</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Avance General */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Avance General del Proyecto</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Progreso total</span>
+              <span className="text-2xl font-bold">{proyecto.avance_promedio}%</span>
+            </div>
+            <Progress value={proyecto.avance_promedio} className="h-3" />
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Fases */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Fases del Proyecto</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {proyecto.fases && proyecto.fases.length > 0 ? (
+            <div className="space-y-4">
+              {proyecto.fases.map((fase: Fase) => (
+                <div key={fase.id} className="border-b pb-4 last:border-0 last:pb-0">
+                  <div className="flex items-center justify-between mb-2">
+                    <div>
+                      <h3 className="font-semibold">{fase.nombre}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Compromiso: {new Date(fase.fecha_compromiso).toLocaleDateString('es-MX')}
+                      </p>
+                    </div>
+                    <Badge variant={fase.completada ? "success" : fase.porcentaje_avance > 0 ? "warning" : "secondary"}>
+                      {fase.completada ? "Completada" : `${fase.porcentaje_avance}%`}
+                    </Badge>
+                  </div>
+                  <Progress value={fase.porcentaje_avance} className="h-2" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">Sin fases registradas</p>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+
+--- File: ProduccionPage.tsx ---
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { api } from '@/lib/api'
+import { Factory, Search, Loader2, Calendar, User, Package, Clock, AlertCircle, CheckCircle2 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+
+interface Pedido {
+  id: string
+  cliente: string
+  cliente_nombre: string
+  proyecto: string | null
+  proyecto_nombre: string
+  tipo_objeto: string
+  especificaciones: string
+  responsable_taller: string | null
+  responsable_nombre: string
+  fecha_entrega: string
+  estatus: string
+  estatus_display: string
+  creado_en: string
+}
+
+export function ProduccionPage() {
+  const [search, setSearch] = useState('')
+  const [filtroEstatus, setFiltroEstatus] = useState('')
+  const navigate = useNavigate()
+
+  const { data: pedidos, isLoading } = useQuery({
+    queryKey: ['pedidos', filtroEstatus],
+    queryFn: async () => {
+      const params = new URLSearchParams()
+      if (filtroEstatus) params.append('estatus', filtroEstatus)
+      
+      const { data } = await api.get(`/produccion/pedidos/?${params.toString()}`)
+      return data.results || data
+    },
+  })
+
+  const pedidosFiltrados = (pedidos || []).filter((p: Pedido) =>
+    p.tipo_objeto.toLowerCase().includes(search.toLowerCase()) ||
+    p.cliente_nombre.toLowerCase().includes(search.toLowerCase()) ||
+    (p.proyecto_nombre || '').toLowerCase().includes(search.toLowerCase())
+  )
+
+  // Calcular estadísticas
+  const totalPedidos = pedidosFiltrados.length
+  const enTaller = pedidosFiltrados.filter((p: Pedido) => p.estatus === 'taller').length
+  const porEntregar = pedidosFiltrados.filter((p: Pedido) => {
+    const hoy = new Date()
+    const entrega = new Date(p.fecha_entrega)
+    const diasRestantes = Math.ceil((entrega.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24))
+    return diasRestantes <= 7 && diasRestantes >= 0
+  }).length
+
+  const getEstatusColor = (estatus: string) => {
+    switch (estatus) {
+      case 'diseno': return 'secondary'
+      case 'taller': return 'warning'
+      case 'entrega': return 'default'
+      case 'entregado': return 'success'
+      default: return 'secondary'
+    }
+  }
+
+  const getDiasRestantes = (fechaEntrega: string) => {
+    const hoy = new Date()
+    const entrega = new Date(fechaEntrega)
+    return Math.ceil((entrega.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24))
+  }
+
+  return (
+    <div className="space-y-6 p-6">
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Producción</h1>
+        <p className="text-muted-foreground">Control de pedidos y taller</p>
+      </div>
+
+      {/* Estadísticas rápidas */}
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Pedidos</CardTitle>
+            <Package className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{totalPedidos}</div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">En Taller</CardTitle>
+            <Factory className="h-4 w-4 text-amber-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{enTaller}</div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Por Entregar (7 días)</CardTitle>
+            <Clock className="h-4 w-4 text-red-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{porEntregar}</div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Filtros */}
+      <Card>
+        <CardContent className="pt-6">
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Buscar por tipo de objeto, cliente o proyecto..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="pl-9"
+                />
+              </div>
+            </div>
+            <select
+              value={filtroEstatus}
+              onChange={(e) => setFiltroEstatus(e.target.value)}
+              className="flex h-9 w-[200px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm"
+            >
+              <option value="">Todos los estatus</option>
+              <option value="diseno">En diseño</option>
+              <option value="taller">En taller</option>
+              <option value="entrega">En entrega</option>
+              <option value="entregado">Entregado</option>
+            </select>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Lista de Pedidos */}
+      {isLoading ? (
+        <div className="flex h-40 items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {pedidosFiltrados.map((pedido: Pedido) => {
+            const diasRestantes = getDiasRestantes(pedido.fecha_entrega)
+            const urgente = diasRestantes <= 7 && diasRestantes >= 0 && pedido.estatus !== 'entregado'
+            
+            return (
+              <Card
+                key={pedido.id}
+                className={`cursor-pointer hover:shadow-lg transition-all ${urgente ? 'border-red-200 dark:border-red-900' : ''}`}
+                onClick={() => navigate(`/produccion/${pedido.id}`)}
+              >
+                <CardContent className="pt-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold mb-1">{pedido.tipo_objeto}</h3>
+                      <p className="text-sm text-muted-foreground mb-2">{pedido.cliente_nombre}</p>
+                      {pedido.proyecto_nombre && (
+                        <p className="text-xs text-muted-foreground">
+                          Proyecto: {pedido.proyecto_nombre}
+                        </p>
+                      )}
+                    </div>
+                    <Badge variant={getEstatusColor(pedido.estatus)}>
+                      {pedido.estatus_display}
+                    </Badge>
+                  </div>
+
+                  {/* Especificaciones */}
+                  {pedido.especificaciones && (
+                    <div className="mb-4 p-3 bg-muted rounded-md">
+                      <p className="text-xs font-medium text-muted-foreground mb-1">Especificaciones:</p>
+                      <p className="text-sm">{pedido.especificaciones}</p>
+                    </div>
+                  )}
+
+                  {/* Info adicional */}
+                  <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center gap-4 text-muted-foreground">
+                      {pedido.responsable_nombre && (
+                        <span className="flex items-center gap-1">
+                          <User className="h-4 w-4" />
+                          {pedido.responsable_nombre}
+                        </span>
+                      )}
+                      <span className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        Entrega: {new Date(pedido.fecha_entrega).toLocaleDateString('es-MX')}
+                      </span>
+                    </div>
+                    
+                    {urgente && (
+                      <div className="flex items-center gap-1 text-red-600 font-medium">
+                        <AlertCircle className="h-4 w-4" />
+                        <span>{diasRestantes} días restantes</span>
+                      </div>
+                    )}
+                    
+                    {pedido.estatus === 'entregado' && (
+                      <div className="flex items-center gap-1 text-green-600">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>Entregado</span>
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          })}
+
+          {pedidosFiltrados.length === 0 && !isLoading && (
+            <Card>
+              <CardContent className="pt-6 text-center">
+                <Factory className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                <p className="text-muted-foreground">No se encontraron pedidos</p>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+
+--- File: ProyectosPage.tsx ---
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Progress } from '@/components/ui/progress'
+import { api } from '@/lib/api'
+import { FolderKanban, Search, Loader2, Calendar, TrendingUp, CheckCircle2, Plus } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+
+interface Proyecto {
+  id: string | number
+  nombre: string
+  cliente_nombre?: string
+  empresa_nombre?: string
+  presupuesto_total?: number
+  fecha_inicio?: string
+  fecha_fin_estimada?: string
+  activo?: boolean
+  fases?: Array<{ id: number; nombre: string; porcentaje_avance: number }>
+}
+
+export function ProyectosPage() {
+  const [search, setSearch] = useState('')
+  const navigate = useNavigate()
+
+  // Consulta robusta que maneja cualquier formato de respuesta
+  const { data: proyectos, isLoading, error } = useQuery({
+    queryKey: ['proyectos'],
+    queryFn: async () => {
+      try {
+        const { data } = await api.get('/proyectos/proyectos/')
+        // Manejar tanto { results: [...] } como [...] directo
+        return Array.isArray(data) ? data : (data.results || [])
+      } catch (err) {
+        console.error("Error cargando proyectos:", err)
+        return []
+      }
+    },
+  })
+
+  // Filtrado seguro
+  const proyectosFiltrados = (proyectos || []).filter((p: Proyecto) =>
+    (p.nombre || '').toLowerCase().includes(search.toLowerCase()) ||
+    (p.cliente_nombre || '').toLowerCase().includes(search.toLowerCase())
+  )
+
+  const totalProyectos = proyectosFiltrados.length
+  const proyectosActivos = proyectosFiltrados.filter((p: Proyecto) => p.activo).length
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <span className="ml-2 text-muted-foreground">Cargando proyectos...</span>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="p-6">
+        <Card className="border-red-200 bg-red-50">
+          <CardContent className="pt-6">
+            <p className="text-red-800">Error al cargar los proyectos. Por favor, recarga la página.</p>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-6 p-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Proyectos</h1>
+          <p className="text-muted-foreground">Gestión y seguimiento de proyectos activos</p>
+        </div>
+        <Button className="gap-2">
+          <Plus className="h-4 w-4" /> Nuevo Proyecto
+        </Button>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Proyectos</CardTitle>
+            <FolderKanban className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{totalProyectos}</div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Proyectos Activos</CardTitle>
+            <CheckCircle2 className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-green-600">{proyectosActivos}</div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Presupuesto Total</CardTitle>
+            <TrendingUp className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">
+              {new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(
+                proyectosFiltrados.reduce((acc, p) => acc + (Number(p.presupuesto_total) || 0), 0)
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardContent className="pt-6">
+          <div className="relative">
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Buscar por nombre o cliente..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="pl-9"
+            />
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="space-y-4">
+        {proyectosFiltrados.length === 0 ? (
+          <Card>
+            <CardContent className="pt-6 text-center">
+              <FolderKanban className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+              <p className="text-muted-foreground">No se encontraron proyectos</p>
+            </CardContent>
+          </Card>
+        ) : (
+          proyectosFiltrados.map((proyecto: Proyecto) => {
+            const avancePromedio = proyecto.fases && proyecto.fases.length > 0 
+              ? Math.round(proyecto.fases.reduce((sum, f) => sum + (f.porcentaje_avance || 0), 0) / proyecto.fases.length)
+              : 0
+
+            return (
+              <Card
+                key={proyecto.id}
+                className="cursor-pointer hover:shadow-lg transition-all"
+                onClick={() => navigate(`/proyectos/${proyecto.id}`)}
+              >
+                <CardContent className="pt-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold mb-1">{proyecto.nombre || 'Sin nombre'}</h3>
+                      <p className="text-sm text-muted-foreground mb-2">{proyecto.cliente_nombre || 'Sin cliente'}</p>
+                      <div className="flex items-center gap-2">
+                        {proyecto.empresa_nombre && (
+                          <Badge variant="outline">{proyecto.empresa_nombre}</Badge>
+                        )}
+                        <Badge variant={proyecto.activo ? 'default' : 'secondary'}>
+                          {proyecto.activo ? 'Activo' : 'Inactivo'}
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-3 mb-4 text-sm">
+                    <div>
+                      <p className="text-xs text-muted-foreground mb-1">Presupuesto</p>
+                      <p className="font-semibold">
+                        {proyecto.presupuesto_total 
+                          ? new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(proyecto.presupuesto_total)
+                          : 'N/A'}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground mb-1">Inicio</p>
+                      <p className="font-semibold flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {proyecto.fecha_inicio ? new Date(proyecto.fecha_inicio).toLocaleDateString('es-MX') : 'N/A'}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground mb-1">Fin Estimado</p>
+                      <p className="font-semibold flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {proyecto.fecha_fin_estimada ? new Date(proyecto.fecha_fin_estimada).toLocaleDateString('es-MX') : 'N/A'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {proyecto.fases && proyecto.fases.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between text-sm mb-2">
+                        <span className="text-muted-foreground">Avance General</span>
+                        <span className="font-semibold">{avancePromedio}%</span>
+                      </div>
+                      <Progress value={avancePromedio} className="h-2" />
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            )
+          })
+        )}
+      </div>
+    </div>
+  )
+}
+
+
+--- File: NuevoProyectoModal.tsx ---
+import { useState } from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { api } from '@/lib/api'
+import { toast } from 'sonner'
+import { Plus, Loader2 } from 'lucide-react'
+
+export function NuevoProyectoModal() {
+  const [open, setOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    nombre: '',
+    cliente_nombre: '', // Simplificado para el demo, en prod sería un select de clientes
+    empresa: '1', // Default a Desarrollo
+    presupuesto_total: '',
+    fecha_inicio: new Date().toISOString().split('T')[0],
+    fecha_fin_estimada: '',
+  })
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation({
+    mutationFn: async (data: any) => {
+      const payload = {
+        ...data,
+        presupuesto_total: parseFloat(data.presupuesto_total) || 0,
+        activo: true
+      }
+      const { data: res } = await api.post('/proyectos/proyectos/', payload)
+      return res
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['proyectos'] })
+      toast.success('Proyecto creado exitosamente', { description: 'El hub central ha sido actualizado.' })
+      setOpen(false)
+      setFormData({ nombre: '', cliente_nombre: '', empresa: '1', presupuesto_total: '', fecha_inicio: new Date().toISOString().split('T')[0], fecha_fin_estimada: '' })
+    },
+    onError: (error: any) => {
+      toast.error('Error al crear proyecto', { description: error.response?.data?.detail || 'Verifica los datos' })
+    }
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!formData.nombre || !formData.presupuesto_total) {
+      toast.error('Faltan datos', { description: 'Nombre y presupuesto son obligatorios' })
+      return
+    }
+    mutation.mutate(formData)
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button className="gap-2">
+          <Plus className="h-4 w-4" /> Nuevo Proyecto
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[500px]">
+        <DialogHeader>
+          <DialogTitle>Crear Nuevo Proyecto</DialogTitle>
+        </DialogHeader>
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <div className="space-y-2">
+            <Label htmlFor="nombre">Nombre del Proyecto</Label>
+            <Input id="nombre" value={formData.nombre} onChange={e => setFormData({...formData, nombre: e.target.value})} placeholder="Ej. Residencial Los Álamos" required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="cliente">Cliente (Nombre Comercial)</Label>
+            <Input id="cliente" value={formData.cliente_nombre} onChange={e => setFormData({...formData, cliente_nombre: e.target.value})} placeholder="Ej. Inmobiliaria del Valle" />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="presupuesto">Presupuesto Total (MXN)</Label>
+              <Input id="presupuesto" type="number" value={formData.presupuesto_total} onChange={e => setFormData({...formData, presupuesto_total: e.target.value})} placeholder="5000000" required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="empresa">Empresa Responsable</Label>
+              <select 
+                id="empresa" 
+                value={formData.empresa} 
+                onChange={e => setFormData({...formData, empresa: e.target.value})}
+                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm"
+              >
+                <option value="1">Desarrollo</option>
+                <option value="2">Arquitectura</option>
+                <option value="3">Producción</option>
+              </select>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="inicio">Fecha de Inicio</Label>
+              <Input id="inicio" type="date" value={formData.fecha_inicio} onChange={e => setFormData({...formData, fecha_inicio: e.target.value})} required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="fin">Fecha Estimada de Fin</Label>
+              <Input id="fin" type="date" value={formData.fecha_fin_estimada} onChange={e => setFormData({...formData, fecha_fin_estimada: e.target.value})} required />
+            </div>
+          </div>
+          <div className="flex justify-end gap-3 pt-4">
+            <DialogClose asChild>
+              <Button type="button" variant="outline">Cancelar</Button>
+            </DialogClose>
+            <Button type="submit" disabled={mutation.isPending}>
+              {mutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              Guardar Proyecto
+            </Button>
+          </div>
+        </form>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+
+--- File: ComercialPage.tsx ---
+import { useState } from 'react'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { api } from '@/lib/api'
+import { toast } from 'sonner'
+import { Loader2, TrendingUp, ArrowRight, Building2 } from 'lucide-react'
+
+// ✅ EXPORTACIÓN NOMBRADA (como la importa App.tsx)
+export function ComercialPage() {
+  const queryClient = useQueryClient()
+
+  const { data: cotizaciones, isLoading } = useQuery({
+    queryKey: ['cotizaciones'],
+    queryFn: async () => {
+      const { data } = await api.get('/comercial/cotizaciones/')
+      return Array.isArray(data) ? data : (data.results || [])
+    }
+  })
+
+  const mutationConvertir = useMutation({
+    mutationFn: async (cotizacionId: string) => {
+      const { data } = await api.post(`/comercial/cotizaciones/${cotizacionId}/convertir_a_proyecto/`)
+      return data
+    },
+    onSuccess: (data) => {
+      toast.success('¡Proyecto Creado!', {
+        description: data.mensaje || 'Cotización convertida exitosamente',
+      })
+      queryClient.invalidateQueries({ queryKey: ['cotizaciones'] })
+      queryClient.invalidateQueries({ queryKey: ['proyectos'] })
+    },
+    onError: (error: any) => {
+      toast.error('Error al convertir', {
+        description: error.response?.data?.error || 'Ocurrió un error inesperado'
+      })
+    }
+  })
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-6 p-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Módulo Comercial</h1>
+          <p className="text-muted-foreground">Gestión de Leads, Cotizaciones y conversión a Proyectos</p>
+        </div>
+        <Button className="gap-2">
+          <TrendingUp className="h-4 w-4" /> Nueva Cotización
+        </Button>
+      </div>
+
+      <div className="grid gap-4">
+        {cotizaciones?.map((cot: any) => (
+          <Card key={cot.id} className="hover:shadow-md transition-shadow">
+            <CardContent className="pt-6">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex-1 space-y-2">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-lg font-semibold">{cot.concepto || 'Cotización'}</h3>
+                    {cot.aprobada ? (
+                      <Badge className="bg-green-100 text-green-800 border-green-200">Aprobada</Badge>
+                    ) : (
+                      <Badge variant="secondary">Pendiente</Badge>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <span className="flex items-center gap-1">
+                      <Building2 className="h-4 w-4" /> {cot.lead?.cliente?.nombre_comercial || 'Cliente'}
+                    </span>
+                    <span>•</span>
+                    <span>{cot.lead?.empresa?.nombre || 'Empresa'}</span>
+                  </div>
+                  <p className="text-2xl font-bold text-primary">
+                    {new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(cot.monto || 0)}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  {cot.aprobada && (
+                    <Button 
+                      onClick={() => mutationConvertir.mutate(cot.id)}
+                      disabled={mutationConvertir.isPending}
+                      className="gap-2 bg-blue-600 hover:bg-blue-700"
+                    >
+                      {mutationConvertir.isPending ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <ArrowRight className="h-4 w-4" />
+                      )}
+                      Convertir a Proyecto
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+
+        {cotizaciones?.length === 0 && (
+          <Card>
+            <CardContent className="pt-6 text-center text-muted-foreground">
+              No hay cotizaciones registradas aún.
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </div>
+  )
+}
+
+
+--- File: ArquitecturaPage.tsx ---
+import { useState, useEffect } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { api } from '@/lib/api'
+import { Palette, Search, Loader2, Box, FileText, ArrowLeft, Eye } from 'lucide-react'
+
+interface ArchivoDiseno {
+  id: number
+  tipo: string
+  tipo_display: string
+  archivo: string
+}
+
+interface PropuestaDiseno {
+  id: string
+  cliente_nombre: string
+  proyecto_nombre: string
+  version: number
+  estatus: string
+  creado_en: string
+  archivos: ArchivoDiseno[]
+}
+
+export function ArquitecturaPage() {
+  const [search, setSearch] = useState('')
+  const [propuestaSeleccionada, setPropuestaSeleccionada] = useState<PropuestaDiseno | null>(null)
+  const [showViewer, setShowViewer] = useState(false)
+
+  const { data: propuestas, isLoading } = useQuery({
+    queryKey: ['propuestas'],
+    queryFn: async () => {
+      const { data } = await api.get('/arquitectura/propuestas/')
+      return data.results || data
+    },
+  })
+
+  // Cargar model-viewer
+  useEffect(() => {
+    if (showViewer && !document.querySelector('script[src*="model-viewer"]')) {
+      const script = document.createElement('script')
+      script.type = 'module'
+      script.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js'
+      document.head.appendChild(script)
+    }
+  }, [showViewer])
+
+  const propuestasFiltradas = (propuestas || []).filter((p: PropuestaDiseno) =>
+    p.cliente_nombre.toLowerCase().includes(search.toLowerCase()) ||
+    (p.proyecto_nombre || '').toLowerCase().includes(search.toLowerCase())
+  )
+
+  const handleVerDetalle = (propuesta: PropuestaDiseno) => {
+    setPropuestaSeleccionada(propuesta)
+    setShowViewer(true)
+  }
+
+  const handleVolver = () => {
+    setShowViewer(false)
+    setPropuestaSeleccionada(null)
+  }
+
+  // Vista de detalle con visor 3D
+  if (showViewer && propuestaSeleccionada) {
+    return (
+      <div className="space-y-6 p-6">
+        <div className="flex items-center gap-4">
+          <Button variant="outline" size="icon" onClick={handleVolver}>
+            <ArrowLeft className="h-4 w-4" />
+          </Button>
+          <div>
+            <h1 className="text-3xl font-bold">{propuestaSeleccionada.proyecto_nombre}</h1>
+            <p className="text-muted-foreground">{propuestaSeleccionada.cliente_nombre} • v{propuestaSeleccionada.version}</p>
+          </div>
+          <Badge className="ml-auto" variant="success">{propuestaSeleccionada.estatus}</Badge>
+        </div>
+
+        <Card className="h-[600px]">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Box className="h-5 w-5 text-primary" />
+              Visor 3D Interactivo
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div className="relative h-[500px] w-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
+              {/* @ts-ignore */}
+              <model-viewer
+                src="https://modelviewer.dev/shared-assets/models/Astronaut.usdz"
+                alt="Modelo 3D"
+                auto-rotate
+                camera-controls
+                touch-action="pan-y"
+                shadow-intensity="1"
+                style={{ width: '100%', height: '100%' }}
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+              >
+                <div className="absolute inset-0 flex items-center justify-center bg-background/80">
+                  <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                </div>
+                <button slot="ar-button" className="absolute bottom-4 right-4 rounded-full bg-blue-600 px-4 py-2 text-white text-sm font-semibold">
+                  👁️ Ver en AR
+                </button>
+              </model-viewer>
+            </div>
+          </CardContent>
+        </Card>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <Card>
+            <CardContent className="pt-6">
+              <p className="text-sm text-muted-foreground">Cliente</p>
+              <p className="text-lg font-semibold">{propuestaSeleccionada.cliente_nombre}</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-6">
+              <p className="text-sm text-muted-foreground">Versión</p>
+              <p className="text-lg font-semibold">{propuestaSeleccionada.version}</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-6">
+              <p className="text-sm text-muted-foreground">Archivos 3D</p>
+              <p className="text-lg font-semibold">{propuestaSeleccionada.archivos?.length || 0}</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    )
+  }
+
+  // Vista de lista
+  return (
+    <div className="space-y-6 p-6">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Arquitectura</h1>
+        <p className="text-muted-foreground">Propuestas de diseño y modelos</p>
+      </div>
+
+      <Card>
+        <CardContent className="pt-6">
+          <div className="relative">
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Buscar por cliente o proyecto..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="pl-9"
+            />
+          </div>
+        </CardContent>
+      </Card>
+
+      {isLoading && (
+        <div className="flex h-40 items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      )}
+
+      {!isLoading && (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {propuestasFiltradas.map((propuesta: PropuestaDiseno) => (
+            <Card 
+              key={propuesta.id} 
+              className="cursor-pointer hover:shadow-lg transition-all"
+              onClick={() => handleVerDetalle(propuesta)}
+            >
+              <CardHeader className="pb-3">
+                <div className="flex justify-between items-start">
+                  <CardTitle className="text-lg">
+                    {propuesta.proyecto_nombre || 'Sin proyecto'}
+                  </CardTitle>
+                  <Badge variant={propuesta.estatus === 'aprobado' ? 'success' : 'secondary'}>
+                    {propuesta.estatus}
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">Cliente:</span> {propuesta.cliente_nombre}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <FileText className="h-3 w-3" />
+                    <span>Versión {propuesta.version}</span>
+                  </div>
+                  <Eye className="h-4 w-4 text-primary" />
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+
+--- File: ModelViewer3D.tsx ---
+import { useEffect, useRef } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { RotateCcw, ZoomIn, Box } from 'lucide-react'
+
+interface ModelViewer3DProps {
+  src: string // URL del .usdz
+  title?: string
+  iosSrc?: string
+  alt?: string
+}
+
+export function ModelViewer3D({ src, title = 'Modelo 3D', alt = 'Modelo' }: ModelViewer3DProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Cargar el web component <model-viewer> dinámicamente
+    const script = document.createElement('script')
+    script.type = 'module'
+    script.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js'
+    document.head.appendChild(script)
+    return () => {
+      document.head.removeChild(script)
+    }
+  }, [])
+
+  return (
+    <Card className="overflow-hidden">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Box className="h-5 w-5 text-primary" />
+          <CardTitle>{title}</CardTitle>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm">
+            <RotateCcw className="h-4 w-4 mr-1" /> Reset
+          </Button>
+          <Button variant="outline" size="sm">
+            <ZoomIn className="h-4 w-4 mr-1" /> Zoom
+          </Button>
+        </div>
+      </CardHeader>
+      <CardContent className="p-0">
+        <div
+          ref={containerRef}
+          className="relative aspect-square w-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900"
+        >
+          {/* @ts-ignore - model-viewer es un custom element */}
+          <model-viewer
+            src={src}
+            alt={alt}
+            auto-rotate
+            camera-controls
+            touch-action="pan-y"
+            shadow-intensity="1"
+            exposure="1"
+            environment-image="neutral"
+            style={{ width: '100%', height: '100%' }}
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            ar-scale="auto"
+          >
+            <div slot="progress-bar" className="absolute inset-0 flex items-center justify-center bg-background/80">
+              <p className="text-sm text-muted-foreground">Cargando modelo 3D...</p>
+            </div>
+          </model-viewer>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+// Página demo del visor
+export function ArquitecturaPage() {
+  // URL de ejemplo (reemplazar con un .usdz real de MinIO)
+  const modeloUrl = 'https://modelviewer.dev/shared-assets/models/Astronaut.usdz'
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Arquitectura</h1>
+        <p className="text-muted-foreground">Visor de modelos 3D y propuestas de diseño</p>
+      </div>
+
+      <ModelViewer3D
+        src={modeloUrl}
+        title="Astronauta (demo)"
+        alt="Modelo de demostración"
+      />
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Propuestas de diseño</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">
+            Lista de propuestas conectada a <code>/api/arquitectura/propuestas/</code>.
+            Al hacer clic en una propuesta con archivo USDZ, se carga en el visor.
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+
+--- File: DashboardPage.tsx ---
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Progress } from '@/components/ui/progress'
+import { api } from '@/lib/api'
+import { 
+  TrendingUp, TrendingDown, DollarSign, AlertCircle, 
+  Briefcase, CheckCircle2, Clock, Users, Package,
+  ArrowUpRight, ArrowDownRight, Target, Zap, Loader2,
+  HardHat, FileText, Building2
+} from 'lucide-react'
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  PieChart, Pie, Cell, Legend, AreaChart, Area
+} from 'recharts'
+
+const COLORES_EMPRESA = {
+  'Desarrollo': '#3b82f6',
+  'Arquitectura': '#a855f7',
+  'Producción': '#22c55e',
+}
+const COLORES_PIE = ['#3b82f6', '#a855f7', '#22c55e', '#f59e0b', '#ef4444']
+const COLORES_ESTADO = {
+  'En Diseño': '#94a3b8',
+  'En Taller': '#f59e0b',
+  'En Entrega': '#3b82f6',
+  'Entregado': '#22c55e',
+}
+
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('es-MX', {
+    style: 'currency',
+    currency: 'MXN',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value)
+}
+
+const formatNumber = (value: number) => {
+  return new Intl.NumberFormat('es-MX').format(value)
+}
+
+export function DashboardPage() {
+  const { data: kpis, isLoading: loadingKpis } = useQuery({
+    queryKey: ['dashboard-resumen'],
+    queryFn: async () => {
+      const { data } = await api.get('/direccion/resumen/')
+      return data
+    },
+  })
+
+  const { data: graficas, isLoading: loadingGraficas } = useQuery({
+    queryKey: ['dashboard-graficas'],
+    queryFn: async () => {
+      const { data } = await api.get('/direccion/graficas/')
+      return data
+    },
+  })
+
+  const isLoading = loadingKpis || loadingGraficas
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  // Calcular métricas adicionales
+  const totalFacturado = graficas?.ventas_por_empresa?.reduce((acc: number, v: any) => acc + v.total, 0) ?? 0
+  const totalEmpleados = graficas?.empleados_por_empresa?.reduce((acc: number, e: any) => acc + e.total, 0) ?? 0
+  const totalPedidos = graficas?.pedidos_por_estatus?.reduce((acc: number, p: any) => acc + p.total, 0) ?? 0
+  const pedidosEnTaller = graficas?.pedidos_por_estatus?.find((p: any) => p.estatus === 'En Taller')?.total ?? 0
+
+  const kpisEstrategicos = [
+    {
+      titulo: 'Portafolio Activo',
+      valor: kpis?.proyectos_activos ?? 0,
+      subtitulo: 'proyectos en ejecución',
+      icono: Briefcase,
+      color: 'text-blue-600',
+      bg: 'bg-blue-50 dark:bg-blue-950/20',
+      tendencia: '+2 vs mes anterior',
+      positiva: true
+    },
+    {
+      titulo: 'Avance Global',
+      valor: `${kpis?.avance_promedio ?? 0}%`,
+      subtitulo: 'del portafolio total',
+      icono: Target,
+      color: 'text-green-600',
+      bg: 'bg-green-50 dark:bg-green-950/20',
+      tendencia: (kpis?.avance_promedio ?? 0) > 50 ? 'En tiempo' : 'Requiere atención',
+      positiva: (kpis?.avance_promedio ?? 0) > 50
+    },
+    {
+      titulo: 'CxC Pendiente',
+      valor: formatCurrency(kpis?.cxc_pendiente ?? 0),
+      subtitulo: 'por cobrar',
+      icono: DollarSign,
+      color: 'text-amber-600',
+      bg: 'bg-amber-50 dark:bg-amber-950/20',
+      tendencia: (kpis?.cxc_pendiente ?? 0) > 0 ? 'Requiere seguimiento' : 'Al corriente',
+      positiva: (kpis?.cxc_pendiente ?? 0) === 0
+    },
+    {
+      titulo: 'Alertas Críticas',
+      valor: kpis?.alertas ?? 0,
+      subtitulo: 'requieren atención',
+      icono: AlertCircle,
+      color: 'text-red-600',
+      bg: 'bg-red-50 dark:bg-red-950/20',
+      tendencia: `${kpis?.detalle_alertas?.proyectos_retrasados ?? 0} proyectos vencidos`,
+      positiva: (kpis?.alertas ?? 0) === 0
+    },
+  ]
+
+  const metricasFinancieras = [
+    {
+      label: 'Facturación Total',
+      valor: formatCurrency(totalFacturado),
+      icono: TrendingUp,
+      color: 'text-green-600'
+    },
+    {
+      label: 'Proyección Trimestre',
+      valor: formatCurrency(totalFacturado * 1.2),
+      icono: Zap,
+      color: 'text-blue-600'
+    },
+    {
+      label: 'Pedidos en Producción',
+      valor: formatNumber(pedidosEnTaller),
+      icono: Package,
+      color: 'text-purple-600'
+    },
+    {
+      label: 'Empleados Activos',
+      valor: formatNumber(totalEmpleados),
+      icono: Users,
+      color: 'text-cyan-600'
+    },
+  ]
+
+  return (
+    <div className="space-y-6 p-6">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Dashboard Ejecutivo</h1>
+        <p className="text-muted-foreground">Vista consolidada del holding en tiempo real</p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {kpisEstrategicos.map((kpi) => (
+          <Card key={kpi.titulo} className="overflow-hidden">
+            <CardContent className="pt-6">
+              <div className="flex items-center justify-between">
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-muted-foreground">{kpi.titulo}</p>
+                  <p className="text-3xl font-bold tracking-tight">{kpi.valor}</p>
+                  <p className="text-xs text-muted-foreground">{kpi.subtitulo}</p>
+                  <div className={`flex items-center gap-1 text-xs ${kpi.positiva ? 'text-green-600' : 'text-amber-600'}`}>
+                    {kpi.positiva ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
+                    {kpi.tendencia}
+                  </div>
+                </div>
+                <div className={`h-12 w-12 rounded-full flex items-center justify-center ${kpi.bg}`}>
+                  <kpi.icono className={`h-6 w-6 ${kpi.color}`} />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-4">
+        {metricasFinancieras.map((metrica) => (
+          <Card key={metrica.label}>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">
+                {metrica.label}
+              </CardTitle>
+              <metrica.icono className={`h-4 w-4 ${metrica.color}`} />
+            </CardHeader>
+            <CardContent>
+              <div className="text-xl font-bold">{metrica.valor}</div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {kpis?.detalle_alertas && (kpis.detalle_alertas.proyectos_retrasados > 0 || kpis.detalle_alertas.leads_nuevos_sin_atender > 0) && (
+        <Card className="border-red-200 bg-red-50 dark:bg-red-950/20 dark:border-red-900">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-red-800 dark:text-red-400">
+              <AlertCircle className="h-5 w-5" />
+              Centro de Alertas - Requieren Acción Inmediata
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-2">
+              {kpis.detalle_alertas.proyectos_retrasados > 0 && (
+                <div className="flex items-start gap-3 p-3 bg-white dark:bg-slate-900 rounded-lg border border-red-200">
+                  <Clock className="h-5 w-5 text-red-600 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-red-900 dark:text-red-400">
+                      {kpis.detalle_alertas.proyectos_retrasados} proyectos con fecha vencida
+                    </p>
+                    <p className="text-sm text-red-800 dark:text-red-300 mt-1">
+                      Revisar cronogramas y asignar recursos adicionales
+                    </p>
+                  </div>
+                </div>
+              )}
+              {kpis.detalle_alertas.leads_nuevos_sin_atender > 0 && (
+                <div className="flex items-start gap-3 p-3 bg-white dark:bg-slate-900 rounded-lg border border-amber-200">
+                  <Briefcase className="h-5 w-5 text-amber-600 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-amber-900 dark:text-amber-400">
+                      {kpis.detalle_alertas.leads_nuevos_sin_atender} leads sin atender
+                    </p>
+                    <p className="text-sm text-amber-800 dark:text-amber-300 mt-1">
+                      Oportunidades comerciales pendientes de seguimiento
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <DollarSign className="h-5 w-5 text-green-600" />
+              Ingresos por Empresa del Holding
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {graficas?.ventas_por_empresa && graficas.ventas_por_empresa.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={graficas.ventas_por_empresa}
+                    dataKey="total"
+                    nameKey="empresa"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={100}
+                    label={(entry: any) => `${entry.empresa}: ${formatCurrency(entry.total)}`}
+                  >
+                    {graficas.ventas_por_empresa.map((entry: any, index: number) => (
+                      <Cell key={`cell-${index}`} fill={COLORES_EMPRESA[entry.empresa as keyof typeof COLORES_EMPRESA] || COLORES_PIE[index % COLORES_PIE.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex h-[300px] items-center justify-center text-muted-foreground">
+                Sin datos de ventas disponibles
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-blue-600" />
+              Tendencia de Facturación (6 meses)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {graficas?.facturacion_mensual && graficas.facturacion_mensual.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <AreaChart data={graficas.facturacion_mensual}>
+                  <defs>
+                    <linearGradient id="colorFact" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="mes" />
+                  <YAxis tickFormatter={(v) => `$${(v/1000).toFixed(0)}k`} />
+                  <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                  <Area type="monotone" dataKey="total" stroke="#3b82f6" fillOpacity={1} fill="url(#colorFact)" />
+                </AreaChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex h-[300px] items-center justify-center text-muted-foreground">
+                Sin datos de facturación
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Target className="h-5 w-5 text-purple-600" />
+              Salud del Portafolio - Avance por Proyecto
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {graficas?.avance_proyectos && graficas.avance_proyectos.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={graficas.avance_proyectos} layout="vertical">
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis type="number" domain={[0, 100]} unit="%" />
+                  <YAxis dataKey="nombre" type="category" width={120} />
+                  <Tooltip formatter={(value: number) => `${value}%`} />
+                  <Bar dataKey="avance" fill="#a855f7" radius={[0, 4, 4, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex h-[300px] items-center justify-center text-muted-foreground">
+                Sin proyectos activos
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Package className="h-5 w-5 text-amber-600" />
+              Pipeline de Producción
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {graficas?.pedidos_por_estatus && graficas.pedidos_por_estatus.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={graficas.pedidos_por_estatus}
+                    dataKey="total"
+                    nameKey="estatus"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={100}
+                    label={(entry: any) => `${entry.estatus}: ${entry.total}`}
+                  >
+                    {graficas.pedidos_por_estatus.map((entry: any, index: number) => (
+                      <Cell key={`cell-${index}`} fill={COLORES_ESTADO[entry.estatus as keyof typeof COLORES_ESTADO] || COLORES_PIE[index % COLORES_PIE.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex h-[300px] items-center justify-center text-muted-foreground">
+                Sin pedidos registrados
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Resumen Ejecutivo del Holding</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/20 border border-blue-200">
+              <h4 className="font-semibold text-blue-900 dark:text-blue-400 mb-2">Desempeño General</h4>
+              <p className="text-sm text-blue-800 dark:text-blue-300">
+                {kpis?.proyectos_activos ?? 0} proyectos activos con {kpis?.avance_promedio ?? 0}% de avance promedio.
+                {((kpis?.avance_promedio ?? 0) < 50) && ' Se requiere acelerar la ejecución.'}
+              </p>
+            </div>
+            <div className="p-4 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200">
+              <h4 className="font-semibold text-amber-900 dark:text-amber-400 mb-2">Situación Financiera</h4>
+              <p className="text-sm text-amber-800 dark:text-amber-300">
+                CxC pendiente: {formatCurrency(kpis?.cxc_pendiente ?? 0)}.
+                {(kpis?.cxc_pendiente ?? 0) > 0 && ' Priorizar cobranza de facturas vencidas.'}
+              </p>
+            </div>
+            <div className="p-4 rounded-lg bg-red-50 dark:bg-red-950/20 border border-red-200">
+              <h4 className="font-semibold text-red-900 dark:text-red-400 mb-2">Acciones Críticas</h4>
+              <p className="text-sm text-red-800 dark:text-red-300">
+                {kpis?.alertas ?? 0} alertas activas.
+                {kpis?.detalle_alertas?.proyectos_retrasados && ` ${kpis.detalle_alertas.proyectos_retrasados} proyectos requieren revisión de cronograma.`}
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+
+--- File: RrhhPage.tsx ---
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { api } from '@/lib/api'
+import { 
+  Users, Search, Loader2, Building2, UserCheck, UserX, 
+  Briefcase, Calendar, TrendingUp, Phone, Mail
+} from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+
+interface Empleado {
+  id: string
+  nombre_completo: string
+  puesto: string
+  empresa: string
+  empresa_nombre: string
+  fecha_contrato: string
+  salario: number
+  activo: boolean
+  cuadrilla: string | null
+  cuadrilla_nombre: string
+}
+
+interface Asistencia {
+  id: string
+  empleado: string
+  empleado_nombre: string
+  fecha: string
+  hora_entrada: string
+  hora_salida: string
+  pedido_produccion: string | null
+  pedido_tipo: string
+}
+
+export function RrhhPage() {
+  const [search, setSearch] = useState('')
+  const [filtroEmpresa, setFiltroEmpresa] = useState('')
+  const [filtroActivo, setFiltroActivo] = useState('')
+  const navigate = useNavigate()
+
+  const { data: empleados, isLoading: loadingEmpleados } = useQuery({
+    queryKey: ['empleados', filtroEmpresa, filtroActivo],
+    queryFn: async () => {
+      const params = new URLSearchParams()
+      if (filtroEmpresa) params.append('empresa', filtroEmpresa)
+      if (filtroActivo) params.append('activo', filtroActivo)
+      
+      const { data } = await api.get(`/rrhh/empleados/?${params.toString()}`)
+      return data.results || data
+    },
+  })
+
+  const { data: asistenciasHoy } = useQuery({
+    queryKey: ['asistencias-hoy'],
+    queryFn: async () => {
+      const hoy = new Date().toISOString().split('T')[0]
+      const { data } = await api.get(`/rrhh/asistencias/?fecha=${hoy}`)
+      return data.results || data
+    },
+  })
+
+  const empleadosFiltrados = (empleados || []).filter((e: Empleado) =>
+    e.nombre_completo.toLowerCase().includes(search.toLowerCase()) ||
+    e.puesto.toLowerCase().includes(search.toLowerCase())
+  )
+
+  // Calcular KPIs
+  const totalEmpleados = empleadosFiltrados.length
+  const empleadosActivos = empleadosFiltrados.filter((e: Empleado) => e.activo).length
+  const empleadosInactivos = empleadosFiltrados.filter((e: Empleado) => !e.activo).length
+  
+  // Distribución por empresa
+  const empleadosPorEmpresa = empleadosFiltrados.reduce((acc: any, e: Empleado) => {
+    acc[e.empresa_nombre] = (acc[e.empresa_nombre] || 0) + 1
+    return acc
+  }, {})
+
+  // Asistencias del día
+  const asistenciasDelDia = (asistenciasHoy || []).length
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value)
+  }
+
+  const getEmpresaColor = (empresa: string) => {
+    switch (empresa) {
+      case 'Desarrollo': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+      case 'Arquitectura': return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
+      case 'Producción': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+    }
+  }
+
+  return (
+    <div className="space-y-6 p-6">
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Recursos Humanos</h1>
+        <p className="text-muted-foreground">Gestión de empleados y asistencia</p>
+      </div>
+
+      {/* KPIs Principales */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Empleados</CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{totalEmpleados}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Registrados en el sistema
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Activos</CardTitle>
+            <UserCheck className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-green-600">{empleadosActivos}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              {totalEmpleados > 0 ? `${Math.round((empleadosActivos / totalEmpleados) * 100)}% del total` : '0%'}
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Inactivos</CardTitle>
+            <UserX className="h-4 w-4 text-red-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-red-600">{empleadosInactivos}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Baja o suspendidos
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Asistencia Hoy</CardTitle>
+            <Calendar className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-blue-600">{asistenciasDelDia}</div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Empleados presentes hoy
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Distribución por Empresa */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Building2 className="h-5 w-5 text-primary" />
+            Distribución por Empresa
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-3">
+            {Object.entries(empleadosPorEmpresa).map(([empresa, cantidad]) => (
+              <div key={empresa} className="flex items-center justify-between p-4 rounded-lg border">
+                <div className="flex items-center gap-3">
+                  <div className={`h-10 w-10 rounded-full flex items-center justify-center ${getEmpresaColor(empresa)}`}>
+                    <Building2 className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="font-semibold">{empresa}</p>
+                    <p className="text-xs text-muted-foreground">Empleados</p>
+                  </div>
+                </div>
+                <span className="text-2xl font-bold">{cantidad as number}</span>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Filtros */}
+      <Card>
+        <CardContent className="pt-6">
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Buscar por nombre o puesto..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="pl-9"
+                />
+              </div>
+            </div>
+            <select
+              value={filtroEmpresa}
+              onChange={(e) => setFiltroEmpresa(e.target.value)}
+              className="flex h-9 w-[200px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm"
+            >
+              <option value="">Todas las empresas</option>
+              <option value="1">Desarrollo</option>
+              <option value="2">Arquitectura</option>
+              <option value="3">Producción</option>
+            </select>
+            <select
+              value={filtroActivo}
+              onChange={(e) => setFiltroActivo(e.target.value)}
+              className="flex h-9 w-[200px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm"
+            >
+              <option value="">Todos</option>
+              <option value="true">Activos</option>
+              <option value="false">Inactivos</option>
+            </select>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Lista de Empleados */}
+      {loadingEmpleados ? (
+        <div className="flex h-40 items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {empleadosFiltrados.map((empleado: Empleado) => (
+            <Card
+              key={empleado.id}
+              className="cursor-pointer hover:shadow-lg transition-all"
+              onClick={() => navigate(`/rrhh/${empleado.id}`)}
+            >
+              <CardContent className="pt-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold mb-1">{empleado.nombre_completo}</h3>
+                    <p className="text-sm text-muted-foreground flex items-center gap-1">
+                      <Briefcase className="h-4 w-4" />
+                      {empleado.puesto}
+                    </p>
+                  </div>
+                  <Badge variant={empleado.activo ? 'success' : 'secondary'}>
+                    {empleado.activo ? 'Activo' : 'Inactivo'}
+                  </Badge>
+                </div>
+
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground">Empresa:</span>
+                    <Badge variant="outline" className={getEmpresaColor(empleado.empresa_nombre)}>
+                      {empleado.empresa_nombre}
+                    </Badge>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground">Contratado:</span>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" />
+                      {new Date(empleado.fecha_contrato).toLocaleDateString('es-MX')}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground">Salario:</span>
+                    <span className="font-semibold text-green-600">
+                      {formatCurrency(Number(empleado.salario))}
+                    </span>
+                  </div>
+
+                  {empleado.cuadrilla_nombre && (
+                    <div className="flex items-center justify-between pt-2 border-t">
+                      <span className="text-muted-foreground">Cuadrilla:</span>
+                      <span className="font-medium">{empleado.cuadrilla_nombre}</span>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+
+          {empleadosFiltrados.length === 0 && !loadingEmpleados && (
+            <Card className="col-span-full">
+              <CardContent className="pt-6 text-center">
+                <Users className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                <p className="text-muted-foreground">No se encontraron empleados</p>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+
+--- File: EmpleadoDetailPage.tsx ---
+import { useParams, useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { api } from '@/lib/api'
+import { 
+  ArrowLeft, Calendar, Briefcase, Building2, DollarSign, 
+  UserCheck, Phone, Mail, MapPin, Clock
+} from 'lucide-react'
+import { Loader2 } from 'lucide-react'
+
+interface Empleado {
+  id: string
+  nombre_completo: string
+  puesto: string
+  empresa: string
+  empresa_nombre: string
+  fecha_contrato: string
+  salario: number
+  activo: boolean
+  cuadrilla: string | null
+  cuadrilla_nombre: string
+}
+
+export function EmpleadoDetailPage() {
+  const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+
+  const { data: empleado, isLoading, error } = useQuery({
+    queryKey: ['empleado', id],
+    queryFn: async () => {
+      const { data } = await api.get(`/rrhh/empleados/${id}/`)
+      return data
+    },
+    enabled: !!id,
+  })
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  if (error || !empleado) {
+    return (
+      <Card className="border-destructive">
+        <CardContent className="pt-6">
+          <p className="text-sm text-destructive">Error al cargar el empleado</p>
+          <Button variant="outline" className="mt-4" onClick={() => navigate('/rrhh')}>
+            <ArrowLeft className="mr-2 h-4 w-4" /> Volver
+          </Button>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value)
+  }
+
+  const getEmpresaColor = (empresa: string) => {
+    switch (empresa) {
+      case 'Desarrollo': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+      case 'Arquitectura': return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
+      case 'Producción': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+    }
+  }
+
+  // Calcular antigüedad
+  const fechaContrato = new Date(empleado.fecha_contrato)
+  const hoy = new Date()
+  const antiguedadAnios = Math.floor((hoy.getTime() - fechaContrato.getTime()) / (1000 * 60 * 60 * 24 * 365))
+  const antiguedadMeses = Math.floor(((hoy.getTime() - fechaContrato.getTime()) / (1000 * 60 * 60 * 24 * 30)) % 12)
+
+  return (
+    <div className="space-y-6 p-6">
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <Button variant="outline" size="icon" onClick={() => navigate('/rrhh')}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold tracking-tight">{empleado.nombre_completo}</h1>
+          <p className="text-muted-foreground flex items-center gap-2">
+            <Briefcase className="h-4 w-4" />
+            {empleado.puesto}
+          </p>
+        </div>
+        <Badge 
+          variant={empleado.activo ? 'success' : 'secondary'}
+          className="text-sm"
+        >
+          {empleado.activo ? 'Activo' : 'Inactivo'}
+        </Badge>
+      </div>
+
+      {/* Info General */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Empresa</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Badge className={getEmpresaColor(empleado.empresa_nombre)}>
+              {empleado.empresa_nombre}
+            </Badge>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Fecha de Contrato</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-blue-600" />
+              <span className="text-lg font-semibold">
+                {new Date(empleado.fecha_contrato).toLocaleDateString('es-MX')}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Antigüedad</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4 text-purple-600" />
+              <span className="text-lg font-semibold">
+                {antiguedadAnios} años, {antiguedadMeses} meses
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Salario Mensual</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <DollarSign className="h-4 w-4 text-green-600" />
+              <span className="text-lg font-semibold text-green-600">
+                {formatCurrency(Number(empleado.salario))}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Cuadrilla Asignada */}
+      {empleado.cuadrilla_nombre && (
+        <Card className="border-blue-200 bg-blue-50 dark:bg-blue-950/20 dark:border-blue-900">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-3">
+              <MapPin className="h-6 w-6 text-blue-600" />
+              <div>
+                <p className="font-semibold text-blue-900 dark:text-blue-400 text-lg">
+                  Cuadrilla Asignada
+                </p>
+                <p className="text-sm text-blue-800 dark:text-blue-300">
+                  {empleado.cuadrilla_nombre}
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Información Adicional */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <UserCheck className="h-5 w-5 text-primary" />
+            Información del Empleado
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <UserCheck className="h-5 w-5 text-muted-foreground" />
+                <div>
+                  <p className="text-xs text-muted-foreground">ID de Empleado</p>
+                  <p className="font-mono text-sm">{empleado.id}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <Building2 className="h-5 w-5 text-muted-foreground" />
+                <div>
+                  <p className="text-xs text-muted-foreground">Empresa ID</p>
+                  <p className="font-mono text-sm">{empleado.empresa}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Acciones Rápidas */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Acciones Rápidas</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex gap-3">
+            <Button variant="outline">
+              <Phone className="h-4 w-4 mr-2" />
+              Llamar
+            </Button>
+            <Button variant="outline">
+              <Mail className="h-4 w-4 mr-2" />
+              Enviar Email
+            </Button>
+            <Button variant="outline">
+              <Calendar className="h-4 w-4 mr-2" />
+              Ver Asistencia
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+
+--- File: ProtectedRoute.tsx ---
+import { Navigate } from 'react-router-dom'
+import { useAuth } from './useAuth'
+
+export function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { user, isLoading } = useAuth()
+  if (isLoading) return <div className="flex h-screen items-center justify-center">Cargando...</div>
+  if (!user) return <Navigate to="/login" replace />
+  return <>{children}</>
+}
+
+
+--- File: ObraPage.tsx ---
+import { useState, useEffect } from 'react'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Progress } from '@/components/ui/progress'
+import { api } from '@/lib/api'
+import { HardHat, Search, Loader2, Calendar, Users, AlertTriangle, CheckCircle2, TrendingUp, WifiOff, RefreshCw } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { useNetworkStatus } from '@/hooks/useNetworkStatus'
+import { getQueue, syncOfflineQueue } from '@/lib/offlineQueue'
+import { toast } from 'sonner'
+import { NuevaBitacoraModal } from './NuevaBitacoraModal'
+
+interface BitacoraObra {
+  id: string
+  proyecto: string
+  proyecto_nombre: string
+  fecha: string
+  porcentaje_avance: number
+  cuadrilla: string | null
+  cuadrilla_nombre: string
+  registrado_por: string | null
+  registrado_por_nombre: string
+  incidencias: string
+  fotos: Array<{ id: number; imagen: string }>
+  consumos: Array<{ id: number; material: string; cantidad: number; unidad: string }>
+}
+
+export function ObraPage() {
+  const [search, setSearch] = useState('')
+  const [filtroProyecto, setFiltroProyecto] = useState('')
+  const [pendingCount, setPendingCount] = useState(0)
+  const navigate = useNavigate()
+  const isOnline = useNetworkStatus()
+  const queryClient = useQueryClient()
+
+  const { data: bitacoras, isLoading } = useQuery({
+    queryKey: ['bitacoras', filtroProyecto],
+    queryFn: async () => {
+      const params = new URLSearchParams()
+      if (filtroProyecto) params.append('proyecto', filtroProyecto)
+      const { data } = await api.get(`/obra/bitacoras/?${params.toString()}`)
+      return data.results || data
+    },
+  })
+
+  // Actualizar contador de pendientes
+  useEffect(() => {
+    setPendingCount(getQueue().length)
+  }, [isOnline]) // Se actualiza cuando cambia el estado de red
+
+  // 🌟 AUTO-SINCRONIZACIÓN 🌟
+  useEffect(() => {
+    if (isOnline && pendingCount > 0) {
+      toast.info('Sincronizando datos pendientes...', { icon: <RefreshCw className="h-4 w-4 animate-spin" /> })
+      syncOfflineQueue().then(synced => {
+        if (synced > 0) {
+          toast.success(`${synced} bitácora(s) sincronizada(s) con el servidor`, { icon: <CheckCircle2 className="h-4 w-4 text-green-600" /> })
+          queryClient.invalidateQueries({ queryKey: ['bitacoras'] })
+          setPendingCount(getQueue().length)
+        }
+      })
+    }
+  }, [isOnline, pendingCount, queryClient])
+
+  const bitacorasFiltradas = (bitacoras || []).filter((b: BitacoraObra) =>
+    b.proyecto_nombre.toLowerCase().includes(search.toLowerCase()) ||
+    b.incidencias.toLowerCase().includes(search.toLowerCase())
+  )
+
+  const totalBitacoras = bitacorasFiltradas.length
+  const avancePromedio = totalBitacoras > 0 
+    ? Math.round(bitacorasFiltradas.reduce((acc: number, b: BitacoraObra) => acc + b.porcentaje_avance, 0) / totalBitacoras)
+    : 0
+  const bitacorasHoy = bitacorasFiltradas.filter((b: BitacoraObra) => 
+    new Date(b.fecha).toDateString() === new Date().toDateString()
+  ).length
+
+  return (
+    <div className="space-y-6 p-6">
+      {/* Banner de Estado de Red */}
+      {!isOnline && (
+        <div className="bg-amber-100 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700 text-amber-900 dark:text-amber-200 px-4 py-3 rounded-lg flex items-center gap-3">
+          <WifiOff className="h-5 w-5" />
+          <div>
+            <p className="font-semibold">Modo sin conexión</p>
+            <p className="text-sm">Los datos se guardarán localmente y se sincronizarán automáticamente al recuperar la señal.</p>
+          </div>
+          {pendingCount > 0 && (
+            <Badge variant="outline" className="ml-auto bg-amber-200 dark:bg-amber-800">
+              {pendingCount} pendiente(s)
+            </Badge>
+          )}
+        </div>
+      )}
+
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Obra</h1>
+          <p className="text-muted-foreground">Bitácoras de obra y seguimiento de avance</p>
+        </div>
+        <NuevaBitacoraModal />
+      </div>
+
+      {/* ... (El resto del código de estadísticas y lista se mantiene igual, solo asegúrate de que el archivo completo esté bien) ... */}
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Bitácoras</CardTitle>
+            <HardHat className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent><div className="text-2xl font-bold">{totalBitacoras}</div></CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Avance Promedio</CardTitle>
+            <TrendingUp className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent><div className="text-2xl font-bold">{avancePromedio}%</div></CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Bitácoras Hoy</CardTitle>
+            <Calendar className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent><div className="text-2xl font-bold">{bitacorasHoy}</div></CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardContent className="pt-6">
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Buscar por proyecto o incidencias..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
+              </div>
+            </div>
+            <select value={filtroProyecto} onChange={(e) => setFiltroProyecto(e.target.value)} className="flex h-9 w-[200px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm">
+              <option value="">Todos los proyectos</option>
+            </select>
+          </div>
+        </CardContent>
+      </Card>
+
+      {isLoading ? (
+        <div className="flex h-40 items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>
+      ) : (
+        <div className="space-y-4">
+          {bitacorasFiltradas.map((bitacora: BitacoraObra) => (
+            <Card key={bitacora.id} className="cursor-pointer hover:shadow-lg transition-all" onClick={() => navigate(`/obra/${bitacora.id}`)}>
+              <CardContent className="pt-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold mb-1">{bitacora.proyecto_nombre}</h3>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1"><Calendar className="h-4 w-4" />{new Date(bitacora.fecha).toLocaleDateString('es-MX')}</span>
+                      {bitacora.cuadrilla_nombre && <span className="flex items-center gap-1"><Users className="h-4 w-4" />{bitacora.cuadrilla_nombre}</span>}
+                    </div>
+                  </div>
+                  <Badge variant={bitacora.porcentaje_avance >= 100 ? 'success' : 'secondary'}>{bitacora.porcentaje_avance}%</Badge>
+                </div>
+                <div className="mb-4">
+                  <div className="flex items-center justify-between text-sm mb-2">
+                    <span className="text-muted-foreground">Avance</span>
+                    <span className="font-semibold">{bitacora.porcentaje_avance}%</span>
+                  </div>
+                  <Progress value={bitacora.porcentaje_avance} className="h-2" />
+                </div>
+                {bitacora.incidencias && (
+                  <div className="flex items-start gap-2 text-sm bg-amber-50 dark:bg-amber-950/20 p-3 rounded-md">
+                    <AlertTriangle className="h-4 w-4 text-amber-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium text-amber-900 dark:text-amber-400 mb-1">Incidencias:</p>
+                      <p className="text-amber-800 dark:text-amber-300">{bitacora.incidencias}</p>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+          {bitacorasFiltradas.length === 0 && !isLoading && (
+            <Card><CardContent className="pt-6 text-center"><HardHat className="mx-auto h-12 w-12 text-muted-foreground mb-4" /><p className="text-muted-foreground">No se encontraron bitácoras</p></CardContent></Card>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+
+--- File: useAuth.tsx ---
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import { authAPI } from '@/lib/api'
+import { queryClient } from '@/lib/queryClient'
+
+interface User {
+  id: number
+  username: string
+  first_name: string
+  last_name: string
+  email: string
+  rol?: number
+  puesto?: string
+}
+
+interface AuthContextType {
+  user: User | null
+  isLoading: boolean
+  login: (username: string, password: string) => Promise<void>
+  logout: () => void
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined)
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<User | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const token = localStorage.getItem('access_token')
+    if (token) {
+      authAPI.me()
+        .then((res) => setUser(res.data))
+        .catch(() => localStorage.removeItem('access_token'))
+        .finally(() => setIsLoading(false))
+    } else {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const login = async (username: string, password: string) => {
+    const { data } = await authAPI.login(username, password)
+    localStorage.setItem('access_token', data.access)
+    localStorage.setItem('refresh_token', data.refresh)
+    const me = await authAPI.me()
+    setUser(me.data)
+  }
+
+  const logout = () => {
+    localStorage.removeItem('access_token')
+    localStorage.removeItem('refresh_token')
+    setUser(null)
+    queryClient.clear()
+  }
+
+  return (
+    <AuthContext.Provider value={{ user, isLoading, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  )
+}
+
+export function useAuth() {
+  const ctx = useContext(AuthContext)
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider')
+  return ctx
+}
+
+
+--- File: LoginPage.tsx ---
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { useAuth } from './useAuth'
+
+export function LoginPage() {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const { login } = useAuth()
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError('')
+    setLoading(true)
+    try {
+      await login(username, password)
+      navigate('/')
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Credenciales inválidas')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl font-bold text-center">Holding Ro</CardTitle>
+          <p className="text-center text-sm text-muted-foreground">Inicia sesión para continuar</p>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="username">Usuario</Label>
+              <Input
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="admin"
+                autoComplete="username"
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Contraseña</Label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                autoComplete="current-password"
+                required
+              />
+            </div>
+            {error && (
+              <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">{error}</div>
+            )}
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? 'Entrando...' : 'Iniciar sesión'}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+
+--- File: NuevaBitacoraModal.tsx ---
+import { useState, useRef } from 'react'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { api } from '@/lib/api'
+import { toast } from 'sonner'
+import { Plus, Loader2, Camera, WifiOff, X, Image as ImageIcon } from 'lucide-react'
+import { useNetworkStatus } from '@/hooks/useNetworkStatus'
+import { saveToQueue, PendingItem } from '@/lib/offlineQueue'
+import { FileUpload } from '@/components/ui/FileUpload'
+
+export function NuevaBitacoraModal() {
+  const [open, setOpen] = useState(false)
+  const isOnline = useNetworkStatus()
+  const [formData, setFormData] = useState({
+    proyecto: '',
+    porcentaje_avance: 0,
+    incidencias: '',
+    fecha: new Date().toISOString().split('T')[0]
+  })
+  const [fotosSubidas, setFotosSubidas] = useState<any[]>([])
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const queryClient = useQueryClient()
+
+  const { data: proyectos } = useQuery({
+    queryKey: ['proyectos-lista'],
+    queryFn: async () => {
+      const { data } = await api.get('/proyectos/proyectos/?activo=true')
+      return data.results || data
+    }
+  })
+
+  const mutation = useMutation({
+    mutationFn: async (data: any) => {
+      const payload = { 
+        ...data, 
+        porcentaje_avance: parseFloat(data.porcentaje_avance) || 0,
+        fotos: fotosSubidas.map(f => ({ archivo: f.file_path }))
+      }
+      const { data: res } = await api.post('/obra/bitacoras/', payload)
+      return res
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['bitacoras'] })
+      toast.success('Bitácora registrada y sincronizada', { 
+        description: 'El avance de obra ha sido actualizado en el servidor.' 
+      })
+      setOpen(false)
+      resetForm()
+    },
+    onError: (error: any) => {
+      toast.error('Error al registrar', { 
+        description: error.response?.data?.detail || 'Verifica los datos' 
+      })
+    }
+  })
+
+  const resetForm = () => {
+    setFormData({ proyecto: '', porcentaje_avance: 0, incidencias: '', fecha: new Date().toISOString().split('T')[0] })
+    setFotosSubidas([])
+  }
+
+  const handleFileUploadComplete = (fileData: any) => {
+    setFotosSubidas(prev => [...prev, fileData])
+  }
+
+  const handleRemoveFoto = (index: number) => {
+    setFotosSubidas(prev => prev.filter((_, i) => i !== index))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!formData.proyecto) {
+      toast.error('Faltan datos', { description: 'Debes seleccionar un proyecto' })
+      return
+    }
+
+    if (!isOnline) {
+      const pendingItem: PendingItem = {
+        id: `local_${Date.now()}`,
+        type: 'BITACORA',
+        data: { 
+          ...formData, 
+          porcentaje_avance: parseFloat(formData.porcentaje_avance) || 0,
+          fotos: fotosSubidas.map(f => ({ archivo: f.file_path }))
+        },
+        timestamp: Date.now()
+      }
+      saveToQueue(pendingItem)
+      toast.warning('Guardado localmente', { 
+        description: 'Sin conexión. Se sincronizará automáticamente al recuperar la señal.',
+        icon: <WifiOff className="h-4 w-4" />
+      })
+      setOpen(false)
+      resetForm()
+      return
+    }
+
+    mutation.mutate(formData)
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button className="gap-2 bg-green-600 hover:bg-green-700">
+          <Plus className="h-4 w-4" /> Nueva Bitácora
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2">
+            Registrar Avance de Obra
+            {!isOnline && (
+              <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full flex items-center gap-1">
+                <WifiOff className="h-3 w-3"/> Modo Offline
+              </span>
+            )}
+          </DialogTitle>
+        </DialogHeader>
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <div className="space-y-2">
+            <Label htmlFor="proyecto">Proyecto *</Label>
+            <select 
+              id="proyecto" 
+              value={formData.proyecto} 
+              onChange={e => setFormData({...formData, proyecto: e.target.value})}
+              className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm"
+              required
+            >
+              <option value="">Seleccionar proyecto...</option>
+              {proyectos?.map((p: any) => (
+                <option key={p.id} value={p.id}>{p.nombre}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="fecha">Fecha *</Label>
+              <Input id="fecha" type="date" value={formData.fecha} onChange={e => setFormData({...formData, fecha: e.target.value})} required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="avance">% de Avance *</Label>
+              <Input id="avance" type="number" min="0" max="100" value={formData.porcentaje_avance} onChange={e => setFormData({...formData, porcentaje_avance: e.target.value})} placeholder="30" required />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="incidencias">Incidencias / Observaciones</Label>
+            <textarea 
+              id="incidencias" 
+              value={formData.incidencias} 
+              onChange={e => setFormData({...formData, incidencias: e.target.value})}
+              className="flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              placeholder="Ej. Inicio de cimentación sin contratiempos."
+            />
+          </div>
+
+          {/* Upload de fotos con cámara */}
+          <div className="space-y-2">
+            <Label>Fotos de Avance</Label>
+            <FileUpload
+              fileType="foto"
+              accept="image/*"
+              maxFiles={10}
+              onUploadComplete={handleFileUploadComplete}
+              label=""
+              description="Toma fotos desde tu iPad o selecciona archivos"
+            />
+            
+            {fotosSubidas.length > 0 && (
+              <div className="grid grid-cols-3 gap-2 mt-2">
+                {fotosSubidas.map((foto, index) => (
+                  <div key={index} className="relative aspect-square rounded-lg overflow-hidden border">
+                    <img 
+                      src={foto.file_url} 
+                      alt={`Foto ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveFoto(index)}
+                      className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="flex justify-end gap-3 pt-4 border-t">
+            <DialogClose asChild>
+              <Button type="button" variant="outline">Cancelar</Button>
+            </DialogClose>
+            <Button 
+              type="submit" 
+              disabled={mutation.isPending} 
+              className={!isOnline ? 'bg-amber-600 hover:bg-amber-700' : 'bg-green-600 hover:bg-green-700'}
+            >
+              {mutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {!isOnline ? 'Guardar Localmente' : 'Registrar Bitácora'}
+            </Button>
+          </div>
+        </form>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+
+--- File: BitacoraDetailPage.tsx ---
+import { useParams, useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
+import { api } from '@/lib/api'
+import { ArrowLeft, Calendar, Users, User, AlertTriangle, Image, Package, CheckCircle2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
+
+interface ConsumoMaterial {
+  id: number
+  material: string
+  cantidad: number
+  unidad: string
+}
+
+interface FotoAvance {
+  id: number
+  imagen: string
+}
+
+interface BitacoraObra {
+  id: string
+  proyecto: string
+  proyecto_nombre: string
+  fecha: string
+  porcentaje_avance: number
+  cuadrilla: string | null
+  cuadrilla_nombre: string
+  registrado_por: string | null
+  registrado_por_nombre: string
+  incidencias: string
+  fotos: FotoAvance[]
+  consumos: ConsumoMaterial[]
+}
+
+export function BitacoraDetailPage() {
+  const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+
+  const { data: bitacora, isLoading, error } = useQuery({
+    queryKey: ['bitacora', id],
+    queryFn: async () => {
+      const { data } = await api.get(`/obra/bitacoras/${id}/`)
+      return data
+    },
+    enabled: !!id,
+  })
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  if (error || !bitacora) {
+    return (
+      <Card className="border-destructive">
+        <CardContent className="pt-6">
+          <p className="text-sm text-destructive">Error al cargar la bitácora</p>
+          <Button variant="outline" className="mt-4" onClick={() => navigate('/obra')}>
+            <ArrowLeft className="mr-2 h-4 w-4" /> Volver
+          </Button>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  return (
+    <div className="space-y-6 p-6">
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <Button variant="outline" size="icon" onClick={() => navigate('/obra')}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold tracking-tight">{bitacora.proyecto_nombre}</h1>
+          <p className="text-muted-foreground">Bitácora de Obra</p>
+        </div>
+        <Badge variant={bitacora.porcentaje_avance >= 100 ? 'success' : 'secondary'} className="text-sm">
+          {bitacora.porcentaje_avance}% avance
+        </Badge>
+      </div>
+
+      {/* Info General */}
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Fecha</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-blue-600" />
+              <span className="text-lg font-semibold">
+                {new Date(bitacora.fecha).toLocaleDateString('es-MX')}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Cuadrilla</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-purple-600" />
+              <span className="text-lg font-semibold">
+                {bitacora.cuadrilla_nombre || 'Sin asignar'}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Registrado por</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4 text-green-600" />
+              <span className="text-lg font-semibold">
+                {bitacora.registrado_por_nombre || 'Sin asignar'}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Avance</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-green-600">
+              {bitacora.porcentaje_avance}%
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Avance */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Progreso de la Bitácora</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Progress value={bitacora.porcentaje_avance} className="h-3" />
+        </CardContent>
+      </Card>
+
+      {/* Incidencias */}
+      {bitacora.incidencias && (
+        <Card className="border-amber-200 bg-amber-50 dark:bg-amber-950/20 dark:border-amber-900">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-amber-800 dark:text-amber-400">
+              <AlertTriangle className="h-5 w-5" />
+              Incidencias Reportadas
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-amber-900 dark:text-amber-300">{bitacora.incidencias}</p>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Fotos */}
+      {bitacora.fotos && bitacora.fotos.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Image className="h-5 w-5 text-blue-600" />
+              Fotos de Avance ({bitacora.fotos.length})
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-3">
+              {bitacora.fotos.map((foto) => (
+                <div key={foto.id} className="relative aspect-square rounded-lg overflow-hidden bg-muted">
+                  <img
+                    src={`/media/${foto.imagen}`}
+                    alt={`Foto ${foto.id}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Consumo de Materiales */}
+      {bitacora.consumos && bitacora.consumos.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Package className="h-5 w-5 text-green-600" />
+              Consumo de Materiales ({bitacora.consumos.length})
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2">
+              {bitacora.consumos.map((consumo) => (
+                <div key={consumo.id} className="flex items-center justify-between p-3 rounded-md border">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    <div>
+                      <p className="font-medium">{consumo.material}</p>
+                      <p className="text-sm text-muted-foreground">Unidad: {consumo.unidad}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-bold">{consumo.cantidad}</p>
+                    <p className="text-sm text-muted-foreground">{consumo.unidad}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  )
+}
+
+
+============================================================
+Statistics:
+- Files processed: 43
+- Total size: 172.43 KB
+- Project type: react
+============================================================

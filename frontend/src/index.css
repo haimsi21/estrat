@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 41 50% 56%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 41 50% 56%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 41 50% 56%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 40% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 35% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 35% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 41 50% 56%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 222 25% 16%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 25% 14%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 41 50% 56%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 63% 40%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 222 25% 18%;
+    --input: 222 25% 18%;
+    --ring: 41 50% 56%;
+  }
+}
+
+@layer base {
+  *, ::before, ::after {
+    @apply border-border;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* DESPLEGABLES SELECT Y OPTION */
+  select {
+    color-scheme: dark light;
+  }
+
+  option {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .dark select option,
+  html.dark select option,
+  .dark option {
+    background-color: #111827 !important;
+    color: #f9fafb !important;
+  }
+
+  /* ICONO DE CALENDARIO DE FECHA EN MODO OSCURO Y CLARO */
+  input[type="date"] {
+    color-scheme: light;
+  }
+
+  .dark input[type="date"],
+  html.dark input[type="date"] {
+    color-scheme: dark;
+  }
+
+  .dark input[type="date"]::-webkit-calendar-picker-indicator,
+  html.dark input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.9) sepia(100%) saturate(300%) hue-rotate(5deg);
+    cursor: pointer;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a059;
+}
